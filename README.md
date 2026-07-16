@@ -19,6 +19,8 @@ hardware.
 - both DLC mini-episodes are in English;
 - the DLC menu and offline installed-content checks are enabled;
 - the original Capcom startup is retained;
+- FBI title metadata and Add-On Content labels are in English while retaining
+  the original Capcom icon artwork;
 - 2,012 DLC text replacements are included;
 - all 42 rebuilt DLC GMD containers pass semantic round-trip checks;
 - DLC line wrapping uses the final 3DS glyph advances and the same 365-pixel
@@ -50,8 +52,8 @@ official Title IDs.
 ## Repository contents
 
 - `dgs2tool/` — clean-room GMD, ARC, BPS, IPS, manifest, and porting tools;
-- `scripts/` — official-layout, DLC translation, wrapping, and offline-DLC
-  helpers;
+- `scripts/` — official-layout, DLC translation, wrapping, title-metadata, and
+  offline-DLC helpers;
 - `translation/dlc-direct-en.jsonl` — direct Japanese-to-English DLC
   translation ledger;
 - `reference/` — non-game-data format/build references;

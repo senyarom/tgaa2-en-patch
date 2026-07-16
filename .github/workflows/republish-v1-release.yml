@@ -1,4 +1,4 @@
-name: Republish v1.0.0 as bot
+name: Replace v1.0.0 release assets as bot
 
 on:
   workflow_dispatch:
@@ -25,21 +25,7 @@ jobs:
       - name: Check out release metadata
         uses: actions/checkout@v4
 
-      - name: Check current release author
-        id: release
-        shell: bash
-        run: |
-          set -euo pipefail
-          author=$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${TAG}" --jq '.author.login')
-          echo "Current release author: ${author}"
-          if [[ "${author}" == "github-actions[bot]" ]]; then
-            echo "already_bot=true" >> "${GITHUB_OUTPUT}"
-          else
-            echo "already_bot=false" >> "${GITHUB_OUTPUT}"
-          fi
-
-      - name: Download and verify every existing asset
-        if: steps.release.outputs.already_bot != 'true'
+      - name: Download and verify every replacement asset
         shell: bash
         run: |
           set -euo pipefail
@@ -55,22 +41,10 @@ jobs:
             > "${RUNNER_TEMP}/expected-assets.txt"
           diff -u "${RUNNER_TEMP}/expected-assets.txt" "${RUNNER_TEMP}/actual-assets.txt"
 
-          cp "${GITHUB_WORKSPACE}/docs/releases/assets/"*.png \
-            "${RUNNER_TEMP}/release-assets/"
-
-          for asset in "${RUNNER_TEMP}/release-assets/"*; do
-            basename "${asset}"
-          done | LC_ALL=C sort > "${RUNNER_TEMP}/actual-final-assets.txt"
-          LC_ALL=C sort "${GITHUB_WORKSPACE}/docs/releases/v1.0.0-assets.txt" \
-            > "${RUNNER_TEMP}/expected-final-assets.txt"
-          diff -u "${RUNNER_TEMP}/expected-final-assets.txt" \
-            "${RUNNER_TEMP}/actual-final-assets.txt"
-
           cd "${RUNNER_TEMP}/release-assets"
           sha256sum --check "${GITHUB_WORKSPACE}/docs/releases/v1.0.0.sha256"
 
       - name: Replace release with bot-authored release
-        if: steps.release.outputs.already_bot != 'true'
         shell: bash
         run: |
           set -euo pipefail
@@ -85,15 +59,26 @@ jobs:
             --notes-file "${GITHUB_WORKSPACE}/docs/releases/v1.0.0.md"
 
       - name: Verify replacement author and assets
-        if: steps.release.outputs.already_bot != 'true'
         shell: bash
         run: |
           set -euo pipefail
           author=$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${TAG}" --jq '.author.login')
           test "${author}" = "github-actions[bot]"
 
+          uploader_count=$(gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${TAG}" \
+            --jq '[.assets[] | select(.uploader.login != "github-actions[bot]")] | length')
+          test "${uploader_count}" = "0"
+
           gh api "repos/${GITHUB_REPOSITORY}/releases/tags/${TAG}" \
             --jq '.assets[].name' | LC_ALL=C sort > "${RUNNER_TEMP}/published-assets.txt"
           LC_ALL=C sort "${GITHUB_WORKSPACE}/docs/releases/v1.0.0-assets.txt" \
             > "${RUNNER_TEMP}/expected-assets.txt"
           diff -u "${RUNNER_TEMP}/expected-assets.txt" "${RUNNER_TEMP}/published-assets.txt"
+
+          rm -rf "${RUNNER_TEMP}/published"
+          mkdir -p "${RUNNER_TEMP}/published"
+          gh release download "${TAG}" \
+            --repo "${GITHUB_REPOSITORY}" \
+            --dir "${RUNNER_TEMP}/published"
+          cd "${RUNNER_TEMP}/published"
+          sha256sum --check "${GITHUB_WORKSPACE}/docs/releases/v1.0.0.sha256"

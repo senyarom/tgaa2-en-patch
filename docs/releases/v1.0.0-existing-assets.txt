@@ -1,2 +1,4 @@
-DGS2-English-DLC-v1.0.0.cia
-DGS2-Official-English-v2.3.0.cia
+DGS2-English-DLC-v1.0.1-QR.png
+DGS2-English-DLC-v1.0.1.cia
+DGS2-Official-English-v2.3.1-QR.png
+DGS2-Official-English-v2.3.1.cia
