@@ -12,7 +12,8 @@ were translated directly from Japanese for this project.
 
 ## Status
 
-The current release is a **hardware-test preview**, not a final release.
+Version 1.0.0 is the first stable release and has been verified on real 3DS
+hardware.
 
 - all five main episodes are in English;
 - both DLC mini-episodes are in English;
@@ -35,8 +36,8 @@ Requirements:
 - FBI or another CIA installer.
 
 Download both CIA files from the
-[Releases page](https://github.com/senyarom/tgaa2-en-patch/releases), then
-install them in this order:
+[latest release](https://github.com/senyarom/tgaa2-en-patch/releases/latest),
+then install them in this order:
 
 1. the English update, Title ID `0004000E001AE200`;
 2. the English DLC, Title ID `0004008C001AE200`.
