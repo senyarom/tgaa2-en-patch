@@ -1,0 +1,4063 @@
+{
+  "schema": 1,
+  "source_sha256": "6b93fa4b096960a9f99326326c41cdca0728c8fbb49ab349306cddc308d0bbec",
+  "variables": {
+    "DGS_VERSION": "2.1.0",
+    "DGS_EPISODE": "3",
+    "BPS_HASH": "6ECDE8DD6AA58CADECB4A7B8AB75F448D75174C9C59699DC02266E932B5FE051",
+    "CIA_HASH": "09C1D69E8E4BC6939EC5B3546E7545997A2751DAEAD143EFC08E6D7ED10B6366",
+    "PREVIEW_MODE": "V:/Logo.png",
+    "APPPATH": "0:/3ds/ScarletStudy",
+    "OUTPATH": "0:/3ds/ScarletStudy/DGS2",
+    "DGSCART": "C:/00040000001AE200_v00.3ds",
+    "DIGITAL": "A:/title/00040000/001AE200/content/00000000.app",
+    "DIGITAL2": "A:/title/00040000/001AE200/content/00000003.app",
+    "DMANUAL": "A:/title/00040000/001AE200/content/00000001.app",
+    "SOURCE": "G:"
+  },
+  "summary": {
+    "resource_count": 504,
+    "kinds": {
+      "arc": 8,
+      "bcma": 1,
+      "gmd": 358,
+      "gui": 5,
+      "mca": 1,
+      "tex": 131
+    }
+  },
+  "resources": [
+    {
+      "order": 0,
+      "line": 65,
+      "source": "game",
+      "path": "romfs/archive/evi3d_3_01_01_jpn.arc",
+      "kind": "arc",
+      "scene_number": null
+    },
+    {
+      "order": 1,
+      "line": 66,
+      "source": "game",
+      "path": "romfs/archive/msg_cmn_jpn.arc",
+      "kind": "arc",
+      "scene_number": null
+    },
+    {
+      "order": 2,
+      "line": 67,
+      "source": "game",
+      "path": "romfs/archive/title_jpn.arc",
+      "kind": "arc",
+      "scene_number": null
+    },
+    {
+      "order": 3,
+      "line": 68,
+      "source": "game",
+      "path": "romfs/archive/UI_cmn_jpn.arc",
+      "kind": "arc",
+      "scene_number": null
+    },
+    {
+      "order": 4,
+      "line": 69,
+      "source": "game",
+      "path": "romfs/archive/UI_opdemo00_jpn.arc",
+      "kind": "arc",
+      "scene_number": null
+    },
+    {
+      "order": 5,
+      "line": 70,
+      "source": "game",
+      "path": "romfs/archive/UI_opdemo01_jpn.arc",
+      "kind": "arc",
+      "scene_number": null
+    },
+    {
+      "order": 6,
+      "line": 71,
+      "source": "game",
+      "path": "romfs/archive/UI_opdemo02_jpn.arc",
+      "kind": "arc",
+      "scene_number": null
+    },
+    {
+      "order": 7,
+      "line": 72,
+      "source": "game",
+      "path": "romfs/archive/UI_opdemo03_jpn.arc",
+      "kind": "arc",
+      "scene_number": null
+    },
+    {
+      "order": 8,
+      "line": 73,
+      "source": "game",
+      "path": "romfs/msg/explain_content_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": null
+    },
+    {
+      "order": 9,
+      "line": 74,
+      "source": "game",
+      "path": "romfs/msg/explain_support_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": null
+    },
+    {
+      "order": 10,
+      "line": 75,
+      "source": "game",
+      "path": "romfs/msg/explain_title_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": null
+    },
+    {
+      "order": 11,
+      "line": 76,
+      "source": "game",
+      "path": "romfs/msg/movie_subtitle_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": null
+    },
+    {
+      "order": 12,
+      "line": 77,
+      "source": "game",
+      "path": "romfs/msg/pair_reasoning_01_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": null
+    },
+    {
+      "order": 13,
+      "line": 78,
+      "source": "game",
+      "path": "romfs/msg/pair_reasoning_02_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": null
+    },
+    {
+      "order": 14,
+      "line": 79,
+      "source": "game",
+      "path": "romfs/msg/pair_reasoning_03_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": null
+    },
+    {
+      "order": 15,
+      "line": 80,
+      "source": "game",
+      "path": "romfs/msg/pair_reasoning_04_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": null
+    },
+    {
+      "order": 16,
+      "line": 81,
+      "source": "game",
+      "path": "romfs/msg/pair_reasoning_05_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": null
+    },
+    {
+      "order": 17,
+      "line": 82,
+      "source": "game",
+      "path": "romfs/msg/pair_reasoning_topic_label_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": null
+    },
+    {
+      "order": 18,
+      "line": 83,
+      "source": "game",
+      "path": "romfs/msg/pair_reasoning_topic_message_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": null
+    },
+    {
+      "order": 19,
+      "line": 84,
+      "source": "game",
+      "path": "romfs/msg/pair_reasoning_topic_title_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": null
+    },
+    {
+      "order": 20,
+      "line": 85,
+      "source": "game",
+      "path": "romfs/script/_output/_macro00_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": null
+    },
+    {
+      "order": 21,
+      "line": 86,
+      "source": "game",
+      "path": "romfs/script/_output/_macro01_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": null
+    },
+    {
+      "order": 22,
+      "line": 87,
+      "source": "game",
+      "path": "romfs/script/_output/_macro02_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": null
+    },
+    {
+      "order": 23,
+      "line": 88,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c000_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 24,
+      "line": 89,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c000_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 25,
+      "line": 90,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c001_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 26,
+      "line": 91,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c001_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 27,
+      "line": 92,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c001_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 28,
+      "line": 93,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c001_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 29,
+      "line": 94,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c001_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 30,
+      "line": 95,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c001_0050_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 31,
+      "line": 96,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c002_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 32,
+      "line": 97,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c002_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 33,
+      "line": 98,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c002_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 34,
+      "line": 99,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c002_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 35,
+      "line": 100,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c002_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 36,
+      "line": 101,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c003_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 37,
+      "line": 102,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c003_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 38,
+      "line": 103,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c003_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 39,
+      "line": 104,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c003_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 40,
+      "line": 105,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c003_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 41,
+      "line": 106,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c004_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 42,
+      "line": 107,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c004_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 43,
+      "line": 108,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c004_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 44,
+      "line": 109,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c004_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 45,
+      "line": 110,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c004_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 46,
+      "line": 111,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c004_0050_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 47,
+      "line": 112,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c005_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 48,
+      "line": 113,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c006_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 49,
+      "line": 114,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c006_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 50,
+      "line": 115,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c006_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 51,
+      "line": 116,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c006_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 52,
+      "line": 117,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c006_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 53,
+      "line": 118,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c006_0050_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 54,
+      "line": 119,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c007_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 55,
+      "line": 120,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c007_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 56,
+      "line": 121,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c007_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 57,
+      "line": 122,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c007_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 58,
+      "line": 123,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c007_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 59,
+      "line": 124,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c007_0050_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 60,
+      "line": 125,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c007_0060_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 61,
+      "line": 126,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c008_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 62,
+      "line": 127,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c008_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 63,
+      "line": 128,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c008_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 64,
+      "line": 129,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c008_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 65,
+      "line": 130,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c008_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 66,
+      "line": 131,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c008_0050_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 67,
+      "line": 132,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c008_0060_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 68,
+      "line": 133,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c008_0070_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 69,
+      "line": 134,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c008_0080_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 70,
+      "line": 135,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c009_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 71,
+      "line": 136,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c009_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 72,
+      "line": 137,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c009_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 73,
+      "line": 138,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c009_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 74,
+      "line": 139,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_c009_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 75,
+      "line": 140,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_evidence_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 76,
+      "line": 141,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_pair_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 77,
+      "line": 142,
+      "source": "game",
+      "path": "romfs/script/_output/_sce00_system_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 0
+    },
+    {
+      "order": 78,
+      "line": 143,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_bg0201_0_00_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 79,
+      "line": 144,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_bg0201_1_00_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 80,
+      "line": 145,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_bg0202_0_00_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 81,
+      "line": 146,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_bg0202_0_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 82,
+      "line": 147,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_bg0202_1_00_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 83,
+      "line": 148,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_bg0204_0_10_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 84,
+      "line": 149,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_bg0204_0_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 85,
+      "line": 150,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_bg0204_1_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 86,
+      "line": 151,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_bg0206_0_00_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 87,
+      "line": 152,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_bg0206_0_10_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 88,
+      "line": 153,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_bg0206_0_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 89,
+      "line": 154,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_bg1200_0_00_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 90,
+      "line": 155,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_bg1200_0_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 91,
+      "line": 156,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_bg1200_1_00_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 92,
+      "line": 157,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_bg1200_1_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 93,
+      "line": 158,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_bg1201_0_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 94,
+      "line": 159,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_bg1201_1_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 95,
+      "line": 160,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_bg1202_0_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 96,
+      "line": 161,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_bg1202_1_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 97,
+      "line": 162,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c000_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 98,
+      "line": 163,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c000_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 99,
+      "line": 164,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c000_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 100,
+      "line": 165,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c001_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 101,
+      "line": 166,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c001_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 102,
+      "line": 167,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c001_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 103,
+      "line": 168,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c002_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 104,
+      "line": 169,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c002_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 105,
+      "line": 170,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c002_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 106,
+      "line": 171,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c002_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 107,
+      "line": 172,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c002_0050_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 108,
+      "line": 173,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c002_0060_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 109,
+      "line": 174,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c002_0070_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 110,
+      "line": 175,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c003_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 111,
+      "line": 176,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c003_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 112,
+      "line": 177,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c003_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 113,
+      "line": 178,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c004_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 114,
+      "line": 179,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c004_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 115,
+      "line": 180,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c100_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 116,
+      "line": 181,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c101_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 117,
+      "line": 182,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c101_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 118,
+      "line": 183,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c101_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 119,
+      "line": 184,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c101_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 120,
+      "line": 185,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c101_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 121,
+      "line": 186,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c101_0050_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 122,
+      "line": 187,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c102_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 123,
+      "line": 188,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c102_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 124,
+      "line": 189,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c102_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 125,
+      "line": 190,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c103_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 126,
+      "line": 191,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c103_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 127,
+      "line": 192,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c103_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 128,
+      "line": 193,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c103_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 129,
+      "line": 194,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c104_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 130,
+      "line": 195,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c104_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 131,
+      "line": 196,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c104_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 132,
+      "line": 197,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c104_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 133,
+      "line": 198,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c104_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 134,
+      "line": 199,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c104_0050_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 135,
+      "line": 200,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c104_0060_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 136,
+      "line": 201,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c104_0070_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 137,
+      "line": 202,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c104_0080_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 138,
+      "line": 203,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c104_0090_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 139,
+      "line": 204,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c200_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 140,
+      "line": 205,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c200_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 141,
+      "line": 206,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c200_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 142,
+      "line": 207,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c200_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 143,
+      "line": 208,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c200_0050_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 144,
+      "line": 209,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c200_0060_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 145,
+      "line": 210,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c200_0070_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 146,
+      "line": 211,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c200_0075_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 147,
+      "line": 212,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c200_0080_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 148,
+      "line": 213,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c200_0090_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 149,
+      "line": 214,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c200_0100_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 150,
+      "line": 215,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c200_0110_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 151,
+      "line": 216,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c201_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 152,
+      "line": 217,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c201_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 153,
+      "line": 218,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c201_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 154,
+      "line": 219,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c201_0050_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 155,
+      "line": 220,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c300_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 156,
+      "line": 221,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c301_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 157,
+      "line": 222,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c301_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 158,
+      "line": 223,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c301_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 159,
+      "line": 224,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c301_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 160,
+      "line": 225,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c301_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 161,
+      "line": 226,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c302_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 162,
+      "line": 227,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c302_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 163,
+      "line": 228,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c302_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 164,
+      "line": 229,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c302_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 165,
+      "line": 230,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c302_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 166,
+      "line": 231,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c302_0050_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 167,
+      "line": 232,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c303_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 168,
+      "line": 233,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c304_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 169,
+      "line": 234,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c304_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 170,
+      "line": 235,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c304_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 171,
+      "line": 236,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c304_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 172,
+      "line": 237,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c304_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 173,
+      "line": 238,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c305_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 174,
+      "line": 239,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c305_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 175,
+      "line": 240,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c305_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 176,
+      "line": 241,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c305_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 177,
+      "line": 242,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c305_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 178,
+      "line": 243,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c305_0050_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 179,
+      "line": 244,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c305_0060_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 180,
+      "line": 245,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c305_0070_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 181,
+      "line": 246,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c306_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 182,
+      "line": 247,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c306_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 183,
+      "line": 248,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c306_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 184,
+      "line": 249,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c307_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 185,
+      "line": 250,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_c307_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 186,
+      "line": 251,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_chr010_00_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 187,
+      "line": 252,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_chr010_01_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 188,
+      "line": 253,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_chr030_00_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 189,
+      "line": 254,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_chr030_01_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 190,
+      "line": 255,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_chr070_01_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 191,
+      "line": 256,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_chr205_00_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 192,
+      "line": 257,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_chr205_01_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 193,
+      "line": 258,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_chr206_00_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 194,
+      "line": 259,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_chr206_01_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 195,
+      "line": 260,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_chr208_00_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 196,
+      "line": 261,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_chr208_01_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 197,
+      "line": 262,
+      "source": "game",
+      "path": "romfs/script/_output/_sce01_evidence_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 1
+    },
+    {
+      "order": 198,
+      "line": 263,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_bg0200_0_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 199,
+      "line": 264,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_bg0200_1_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 200,
+      "line": 265,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_bg0204_0_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 201,
+      "line": 266,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_bg0204_1_00_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 202,
+      "line": 267,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_bg0204_1_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 203,
+      "line": 268,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_bg0206_0_00_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 204,
+      "line": 269,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_bg0206_0_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 205,
+      "line": 270,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_bg0206_1_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 206,
+      "line": 271,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_bg0303_0_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 207,
+      "line": 272,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_bg0303_1_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 208,
+      "line": 273,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_bg0304_1_00_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 209,
+      "line": 274,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_bg0304_1_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 210,
+      "line": 275,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_bg0305_1_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 211,
+      "line": 276,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_bg0306_0_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 212,
+      "line": 277,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_bg0307_1_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 213,
+      "line": 278,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_bg0308_0_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 214,
+      "line": 279,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_bg0308_1_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 215,
+      "line": 280,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_bg1300_0_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 216,
+      "line": 281,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_bg1300_1_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 217,
+      "line": 282,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_bg1301_1_check_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 218,
+      "line": 283,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c000_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 219,
+      "line": 284,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c000_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 220,
+      "line": 285,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c000_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 221,
+      "line": 286,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c001_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 222,
+      "line": 287,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c001_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 223,
+      "line": 288,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c001_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 224,
+      "line": 289,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c001_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 225,
+      "line": 290,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c001_0050_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 226,
+      "line": 291,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c001_0060_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 227,
+      "line": 292,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c002_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 228,
+      "line": 293,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c002_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 229,
+      "line": 294,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c002_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 230,
+      "line": 295,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c003_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 231,
+      "line": 296,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c003_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 232,
+      "line": 297,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c003_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 233,
+      "line": 298,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c003_0050_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 234,
+      "line": 299,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c003_0060_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 235,
+      "line": 300,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c003_0070_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 236,
+      "line": 301,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c003_0080_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 237,
+      "line": 302,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c003_0090_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 238,
+      "line": 303,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c003_0110_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 239,
+      "line": 304,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c100_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 240,
+      "line": 305,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c101_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 241,
+      "line": 306,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c101_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 242,
+      "line": 307,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c101_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 243,
+      "line": 308,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c101_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 244,
+      "line": 309,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c101_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 245,
+      "line": 310,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c102_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 246,
+      "line": 311,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c102_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 247,
+      "line": 312,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c102_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 248,
+      "line": 313,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c102_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 249,
+      "line": 314,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c103_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 250,
+      "line": 315,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c104_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 251,
+      "line": 316,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c104_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 252,
+      "line": 317,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c104_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 253,
+      "line": 318,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c104_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 254,
+      "line": 319,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c104_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 255,
+      "line": 320,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c105_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 256,
+      "line": 321,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c105_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 257,
+      "line": 322,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c105_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 258,
+      "line": 323,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c105_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 259,
+      "line": 324,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c105_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 260,
+      "line": 325,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c105_0050_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 261,
+      "line": 326,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c105_0060_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 262,
+      "line": 327,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c106_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 263,
+      "line": 328,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c106_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 264,
+      "line": 329,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c106_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 265,
+      "line": 330,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c106_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 266,
+      "line": 331,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c107_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 267,
+      "line": 332,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c200_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 268,
+      "line": 333,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c200_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 269,
+      "line": 334,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c201_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 270,
+      "line": 335,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c201_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 271,
+      "line": 336,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c201_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 272,
+      "line": 337,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c201_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 273,
+      "line": 338,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c201_0050_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 274,
+      "line": 339,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c201_0060_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 275,
+      "line": 340,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c201_0070_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 276,
+      "line": 341,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c201_0080_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 277,
+      "line": 342,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c201_0090_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 278,
+      "line": 343,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c201_0100_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 279,
+      "line": 344,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c201_0110_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 280,
+      "line": 345,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c201_0120_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 281,
+      "line": 346,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c201_0125_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 282,
+      "line": 347,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c201_0130_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 283,
+      "line": 348,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c201_0150_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 284,
+      "line": 349,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c202_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 285,
+      "line": 350,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c202_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 286,
+      "line": 351,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c202_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 287,
+      "line": 352,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c202_0050_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 288,
+      "line": 353,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c202_0060_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 289,
+      "line": 354,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c202_0070_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 290,
+      "line": 355,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c202_0080_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 291,
+      "line": 356,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c202_0085_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 292,
+      "line": 357,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c202_0090_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 293,
+      "line": 358,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c202_0100_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 294,
+      "line": 359,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c202_0110_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 295,
+      "line": 360,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c202_0120_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 296,
+      "line": 361,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c202_0140_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 297,
+      "line": 362,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c300_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 298,
+      "line": 363,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c301_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 299,
+      "line": 364,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c301_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 300,
+      "line": 365,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c301_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 301,
+      "line": 366,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c301_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 302,
+      "line": 367,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c301_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 303,
+      "line": 368,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c301_0050_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 304,
+      "line": 369,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c301_0060_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 305,
+      "line": 370,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c301_0070_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 306,
+      "line": 371,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c302_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 307,
+      "line": 372,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c302_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 308,
+      "line": 373,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c302_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 309,
+      "line": 374,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c302_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 310,
+      "line": 375,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c303_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 311,
+      "line": 376,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c303_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 312,
+      "line": 377,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c303_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 313,
+      "line": 378,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c303_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 314,
+      "line": 379,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c304_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 315,
+      "line": 380,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c305_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 316,
+      "line": 381,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c305_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 317,
+      "line": 382,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c305_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 318,
+      "line": 383,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c305_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 319,
+      "line": 384,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c305_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 320,
+      "line": 385,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c305_0050_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 321,
+      "line": 386,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c305_0060_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 322,
+      "line": 387,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c305_0070_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 323,
+      "line": 388,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c306_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 324,
+      "line": 389,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c306_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 325,
+      "line": 390,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c306_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 326,
+      "line": 391,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c306_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 327,
+      "line": 392,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c306_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 328,
+      "line": 393,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c306_0050_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 329,
+      "line": 394,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c306_0060_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 330,
+      "line": 395,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c306_0070_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 331,
+      "line": 396,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c306_0080_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 332,
+      "line": 397,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c307_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 333,
+      "line": 398,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c307_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 334,
+      "line": 399,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c307_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 335,
+      "line": 400,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c307_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 336,
+      "line": 401,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c307_0040_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 337,
+      "line": 402,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c307_0050_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 338,
+      "line": 403,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c307_0055_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 339,
+      "line": 404,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c307_0060_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 340,
+      "line": 405,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c307_0070_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 341,
+      "line": 406,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c307_0080_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 342,
+      "line": 407,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c308_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 343,
+      "line": 408,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c308_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 344,
+      "line": 409,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c308_0020_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 345,
+      "line": 410,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_c308_0030_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 346,
+      "line": 411,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_chr010_00_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 347,
+      "line": 412,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_chr010_01_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 348,
+      "line": 413,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_chr030_01_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 349,
+      "line": 414,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_chr040_00_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 350,
+      "line": 415,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_chr040_01_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 351,
+      "line": 416,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_chr050_00_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 352,
+      "line": 417,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_chr050_01_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 353,
+      "line": 418,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_chr060_00_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 354,
+      "line": 419,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_chr060_01_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 355,
+      "line": 420,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_chr070_00_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 356,
+      "line": 421,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_chr103_00_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 357,
+      "line": 422,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_chr103_01_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 358,
+      "line": 423,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_chr105_01_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 359,
+      "line": 424,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_chr230_00_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 360,
+      "line": 425,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_chr230_01_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 361,
+      "line": 426,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_chr231_01_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 362,
+      "line": 427,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_chr322_00_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 363,
+      "line": 428,
+      "source": "game",
+      "path": "romfs/script/_output/_sce02_evidence_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 2
+    },
+    {
+      "order": 364,
+      "line": 429,
+      "source": "game",
+      "path": "romfs/script/_output/_sce03_c000_0000_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 3
+    },
+    {
+      "order": 365,
+      "line": 430,
+      "source": "game",
+      "path": "romfs/script/_output/_sce03_c000_0010_jpn.gmd",
+      "kind": "gmd",
+      "scene_number": 3
+    },
+    {
+      "order": 366,
+      "line": 431,
+      "source": "game",
+      "path": "romfs/sound/stream/se/wav/bb_benron_kaishi_st.mca",
+      "kind": "mca",
+      "scene_number": null
+    },
+    {
+      "order": 367,
+      "line": 432,
+      "source": "game",
+      "path": "romfs/UI/1_ig/11_crt/tex/crt_start_production_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 368,
+      "line": 433,
+      "source": "game",
+      "path": "romfs/UI/1_ig/12_cutin/tex/bigfont_default_GSM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 369,
+      "line": 434,
+      "source": "game",
+      "path": "romfs/UI/1_ig/12_cutin/tex/bigfont_gift_GSM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 370,
+      "line": 435,
+      "source": "game",
+      "path": "romfs/UI/1_ig/12_cutin/tex/bigfont_hay_GSM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 371,
+      "line": 436,
+      "source": "game",
+      "path": "romfs/UI/1_ig/12_cutin/tex/bigfont_here_GSM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 372,
+      "line": 437,
+      "source": "game",
+      "path": "romfs/UI/1_ig/12_cutin/tex/bigfont_say_GSM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 373,
+      "line": 438,
+      "source": "game",
+      "path": "romfs/UI/1_ig/12_cutin/tex/bigfont_uk_default_GSM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 374,
+      "line": 439,
+      "source": "game",
+      "path": "romfs/UI/1_ig/12_cutin/tex/bigfont_uk_wait_GSM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 375,
+      "line": 440,
+      "source": "game",
+      "path": "romfs/UI/1_ig/12_cutin/tex/bigfont_wait_GSM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 376,
+      "line": 441,
+      "source": "game",
+      "path": "romfs/UI/1_ig/13_dtc/tex/dtc_index_sub_BM_NOMIP_HQ.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 377,
+      "line": 442,
+      "source": "game",
+      "path": "romfs/UI/1_ig/13_dtc/tex/dtc_move_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 378,
+      "line": 443,
+      "source": "game",
+      "path": "romfs/UI/2_doc/20_evi/tex/item3_07_01_BM_NOMIP_HQ.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 379,
+      "line": 444,
+      "source": "game",
+      "path": "romfs/UI/2_doc/22_evtcut/tex/EVENT1_12_01_big_BM_NOMIP_HQ.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 380,
+      "line": 445,
+      "source": "game",
+      "path": "romfs/UI/2_doc/22_evtcut/tex/EVENT1_12_01_BM_NOMIP_HQ.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 381,
+      "line": 446,
+      "source": "game",
+      "path": "romfs/UI/2_doc/22_evtcut/tex/EVENT2_17_01_big_BM_NOMIP_HQ.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 382,
+      "line": 447,
+      "source": "game",
+      "path": "romfs/UI/2_doc/22_evtcut/tex/EVENT2_17_01_BM_NOMIP_HQ.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 383,
+      "line": 448,
+      "source": "game",
+      "path": "romfs/UI/2_doc/22_evtcut/tex/EVENT3_11_01_BM_NOMIP_HQ.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 384,
+      "line": 449,
+      "source": "game",
+      "path": "romfs/UI/2_doc/24_demo/tex/demo0_01_00_BM_NOMIP_HQ.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 385,
+      "line": 450,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/together_caption_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 386,
+      "line": 451,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/together_topic00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 387,
+      "line": 452,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/together_topic02_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 388,
+      "line": 453,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/chr010_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 389,
+      "line": 454,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/chr030_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 390,
+      "line": 455,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/chr040_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 391,
+      "line": 456,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/chr050_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 392,
+      "line": 457,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/chr060_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 393,
+      "line": 458,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/chr070_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 394,
+      "line": 459,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/chr100_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 395,
+      "line": 460,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/chr103_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 396,
+      "line": 461,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/chr106_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 397,
+      "line": 462,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/chr151_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 398,
+      "line": 463,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/chr162_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 399,
+      "line": 464,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/chr232_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 400,
+      "line": 465,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/chr233_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 401,
+      "line": 466,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/chr310_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 402,
+      "line": 467,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/chr323_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 403,
+      "line": 468,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/chr324_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 404,
+      "line": 469,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/chr325_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 405,
+      "line": 470,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/chr326_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 406,
+      "line": 471,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/chr327_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 407,
+      "line": 472,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/item0_14_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 408,
+      "line": 473,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/item1_10_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 409,
+      "line": 474,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/item_2_01_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 410,
+      "line": 475,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/item_2_12_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 411,
+      "line": 476,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/item3_01_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 412,
+      "line": 477,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/item3_03_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 413,
+      "line": 478,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/item3_04_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 414,
+      "line": 479,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/item_3_05_02_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 415,
+      "line": 480,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/item3_06_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 416,
+      "line": 481,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/item3_09_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 417,
+      "line": 482,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/item3_11_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 418,
+      "line": 483,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/item3_12_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 419,
+      "line": 484,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/item3_15_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 420,
+      "line": 485,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/item3_17_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 421,
+      "line": 486,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/item3_18_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 422,
+      "line": 487,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/item3_19_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 423,
+      "line": 488,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/item3_21_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 424,
+      "line": 489,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/item_3_23_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 425,
+      "line": 490,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/item_3_24_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 426,
+      "line": 491,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/item3_25_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 427,
+      "line": 492,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/item3_35_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 428,
+      "line": 493,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/item6_09_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 429,
+      "line": 494,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_PV2_00_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 430,
+      "line": 495,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_PV2_00_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 431,
+      "line": 496,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE01_00_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 432,
+      "line": 497,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE01_00_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 433,
+      "line": 498,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE01_00_02_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 434,
+      "line": 499,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE01_00_03_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 435,
+      "line": 500,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE01_00_04_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 436,
+      "line": 501,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE01_00_05_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 437,
+      "line": 502,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE01_00_06_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 438,
+      "line": 503,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE01_00_07_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 439,
+      "line": 504,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE01_00_08_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 440,
+      "line": 505,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE01_00_09_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 441,
+      "line": 506,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE01_00_10_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 442,
+      "line": 507,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_00_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 443,
+      "line": 508,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_00_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 444,
+      "line": 509,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_00_02_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 445,
+      "line": 510,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_00_03_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 446,
+      "line": 511,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_00_04_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 447,
+      "line": 512,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_00_05_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 448,
+      "line": 513,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_00_06_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 449,
+      "line": 514,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_00_07_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 450,
+      "line": 515,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_00_08_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 451,
+      "line": 516,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_00_09_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 452,
+      "line": 517,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_00_10_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 453,
+      "line": 518,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_00_11_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 454,
+      "line": 519,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_00_12_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 455,
+      "line": 520,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_00_13_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 456,
+      "line": 521,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_01_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 457,
+      "line": 522,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_01_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 458,
+      "line": 523,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_01_02_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 459,
+      "line": 524,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_01_03_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 460,
+      "line": 525,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_01_04_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 461,
+      "line": 526,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_01_05_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 462,
+      "line": 527,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_01_06_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 463,
+      "line": 528,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_01_07_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 464,
+      "line": 529,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_01_08_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 465,
+      "line": 530,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_01_09_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 466,
+      "line": 531,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE02_01_10_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 467,
+      "line": 532,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE03_00_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 468,
+      "line": 533,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE03_00_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 469,
+      "line": 534,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE03_00_02_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 470,
+      "line": 535,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE03_00_03_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 471,
+      "line": 536,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE03_00_04_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 472,
+      "line": 537,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE03_00_05_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 473,
+      "line": 538,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE03_00_06_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 474,
+      "line": 539,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE03_00_07_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 475,
+      "line": 540,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE03_00_08_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 476,
+      "line": 541,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE03_00_09_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 477,
+      "line": 542,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE03_00_10_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 478,
+      "line": 543,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE03_00_11_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 479,
+      "line": 544,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE04_00_00_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 480,
+      "line": 545,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE04_00_01_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 481,
+      "line": 546,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE04_00_02_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 482,
+      "line": 547,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE04_00_03_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 483,
+      "line": 548,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE04_00_04_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 484,
+      "line": 549,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE04_00_05_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 485,
+      "line": 550,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE04_00_06_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 486,
+      "line": 551,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE04_00_07_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 487,
+      "line": 552,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE04_00_08_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 488,
+      "line": 553,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE04_00_09_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 489,
+      "line": 554,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE04_00_10_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 490,
+      "line": 555,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE04_00_11_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 491,
+      "line": 556,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/tex/txt/PAIR_SCE04_00_12_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 492,
+      "line": 557,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/together_caption.gui",
+      "kind": "gui",
+      "scene_number": null
+    },
+    {
+      "order": 493,
+      "line": 558,
+      "source": "game",
+      "path": "romfs/UI/3_mg/30_together/together_topic.gui",
+      "kind": "gui",
+      "scene_number": null
+    },
+    {
+      "order": 494,
+      "line": 559,
+      "source": "game",
+      "path": "romfs/UI/3_mg/32_battle/battle_hit00.gui",
+      "kind": "gui",
+      "scene_number": null
+    },
+    {
+      "order": 495,
+      "line": 560,
+      "source": "game",
+      "path": "romfs/UI/3_mg/32_battle/battle_window.gui",
+      "kind": "gui",
+      "scene_number": null
+    },
+    {
+      "order": 496,
+      "line": 561,
+      "source": "game",
+      "path": "romfs/UI/4_menu/40_title/tex/title_jpn_01_BM_NOMIP_HQ.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 497,
+      "line": 562,
+      "source": "game",
+      "path": "romfs/UI/5_guide/50_tutorial/tex/guide_sce0_jpn_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 498,
+      "line": 563,
+      "source": "game",
+      "path": "romfs/UI/5_guide/50_tutorial/tex/guide_sce1_jpn_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 499,
+      "line": 564,
+      "source": "game",
+      "path": "romfs/UI/5_guide/50_tutorial/tex/guide_sce2_jpn_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 500,
+      "line": 565,
+      "source": "game",
+      "path": "romfs/UI/5_guide/50_tutorial/tex/guide_sce3_jpn_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 501,
+      "line": 566,
+      "source": "game",
+      "path": "romfs/UI/5_guide/50_tutorial/tex/tutorial_jpn_BM_NOMIP.tex",
+      "kind": "tex",
+      "scene_number": null
+    },
+    {
+      "order": 502,
+      "line": 567,
+      "source": "game",
+      "path": "romfs/UI/5_guide/50_tutorial/tutorial.gui",
+      "kind": "gui",
+      "scene_number": null
+    },
+    {
+      "order": 503,
+      "line": 570,
+      "source": "extracted_manual",
+      "path": "manual.bcma",
+      "kind": "bcma",
+      "scene_number": null
+    }
+  ]
+}
