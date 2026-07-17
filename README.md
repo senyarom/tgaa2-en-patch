@@ -1,30 +1,34 @@
-# The Great Ace Attorney 2 — English 3DS patch
+# The Great Ace Attorney 1 & 2 — English 3DS patches
 
-An unofficial English patch for the Japanese Nintendo 3DS release of *Dai
-Gyakuten Saiban 2: Naruhodou Ryuunosuke no Kakugo* (*The Great Ace Attorney 2:
-Resolve*).
+Unofficial English patches for the Japanese Nintendo 3DS releases of *Dai
+Gyakuten Saiban* (*The Great Ace Attorney: Adventures*) and *Dai Gyakuten
+Saiban 2* (*The Great Ace Attorney 2: Resolve*).
 
-This continuation builds on the work of [Scarlet
-Study](https://github.com/ScarletStudy/DGS2-3DS-Release). The five main-game
+This project builds on the work of [Scarlet
+Study](https://github.com/ScarletStudy/DGS2-3DS-Release). The main-game
 episodes use the official English localization from a user-supplied PC copy of
-*The Great Ace Attorney Chronicles*. The two 3DS-exclusive DLC mini-episodes
+*The Great Ace Attorney Chronicles*. TGAA1's extra content also uses the
+official English localization; the two 3DS-exclusive TGAA2 DLC mini-episodes
 were translated directly from Japanese for this project.
 
 ## Status
 
-Version 1.0.0 is the first stable release and has been verified on real 3DS
-hardware.
+Version 1.1.0 includes hardware-tested builds for both games.
 
-- all five main episodes are in English;
-- both DLC mini-episodes are in English;
-- the DLC menu and offline installed-content checks are enabled;
+- all ten main episodes are in English;
+- installed DLC is available offline from the leftmost title-menu card;
+- TGAA1 extra content and both TGAA2 DLC mini-episodes are in English;
+- New Game/Continue and Select Episode remain in English;
 - the original Capcom startup is retained;
 - FBI title metadata and Add-On Content labels are in English while retaining
   the original Capcom icon artwork;
-- 2,012 DLC text replacements are included;
-- all 42 rebuilt DLC GMD containers pass semantic round-trip checks;
-- DLC line wrapping uses the final 3DS glyph advances and the same 365-pixel
-  limit as the main patch.
+- TGAA2 contains 2,012 direct DLC text replacements, and all 42 rebuilt DLC
+  GMD containers pass semantic round-trip checks;
+- line wrapping uses the final 3DS glyph advances and hardware-checked layout.
+
+The leftmost DLC card intentionally has no text label in this release. This
+avoids corrupting the shared animated title-menu atlas; the card itself is
+visible, selectable, and functional.
 
 Please report text, layout, menu, or crash problems in
 [Issues](https://github.com/senyarom/tgaa2-en-patch/issues).
@@ -33,28 +37,42 @@ Please report text, layout, menu, or crash problems in
 
 Requirements:
 
-- the Japanese 3DS base game, Title ID `00040000001AE200`;
+- either or both Japanese 3DS base games;
 - a 3DS with current custom firmware;
 - FBI or another CIA installer.
 
-Download both CIA files from the
+Download the files for the game you own from the
 [latest release](https://github.com/senyarom/tgaa2-en-patch/releases/latest),
-then install them in this order:
+then install its update before its DLC.
 
-1. the English update, Title ID `0004000E001AE200`;
-2. the English DLC, Title ID `0004008C001AE200`.
+### The Great Ace Attorney: Adventures
 
-Launch the Japanese base-game icon normally. Do not delete the base game. The
-English update replaces the installed Japanese update, and the English DLC
-replaces the installed Japanese DLC because they use the corresponding
-official Title IDs.
+Base game: `000400000014AD00`
+
+1. `TGAA1-Official-English-v2.7.4.cia` — update
+   (`0004000E0014AD00`);
+2. `TGAA1-English-DLC-v1.0.3.cia` — DLC
+   (`0004008C0014AD00`).
+
+### The Great Ace Attorney 2: Resolve
+
+Base game: `00040000001AE200`
+
+1. `DGS2-Official-English-v2.3.2.cia` — update
+   (`0004000E001AE200`);
+2. `DGS2-English-DLC-v1.0.1.cia` — DLC
+   (`0004008C001AE200`).
+
+Launch the corresponding Japanese base-game icon normally. Do not delete the
+base game. Each English update and DLC replaces the installed Japanese package
+with the corresponding official Title ID.
 
 ## Repository contents
 
 - `dgs2tool/` — clean-room GMD, ARC, BPS, IPS, manifest, and porting tools;
-- `scripts/` — official-layout, DLC translation, wrapping, title-metadata, and
+- `scripts/` — TGAA1/TGAA2 localization, layout, title-menu, metadata, and
   offline-DLC helpers;
-- `translation/dlc-direct-en.jsonl` — direct Japanese-to-English DLC
+- `translation/dlc-direct-en.jsonl` — direct Japanese-to-English TGAA2 DLC
   translation ledger;
 - `reference/` — non-game-data format/build references;
 - `tests/` — unit and format regression tests.
@@ -72,7 +90,7 @@ python3 -m unittest discover -s tests -v
 ## Credits
 
 - Scarlet Study and Fan Translators International — original 3DS English
-  patch, font/rendering work, and reverse engineering;
+  patches, font/rendering work, and reverse engineering;
 - Capcom — the original games and official *Chronicles* localization;
 - Kuriimu2 contributors — documented MT Framework formats;
 - TGAA/DGS community contributors and testers.
