@@ -2,7 +2,7 @@ DGS2-English-DLC-v1.0.1-QR.png
 DGS2-English-DLC-v1.0.1.cia
 DGS2-Official-English-v2.3.2-QR.png
 DGS2-Official-English-v2.3.2.cia
-TGAA1-English-DLC-v1.0.3-QR.png
-TGAA1-English-DLC-v1.0.3.cia
-TGAA1-Official-English-v2.7.4-QR.png
-TGAA1-Official-English-v2.7.4.cia
+TGAA1-English-DLC-v1.0.5-QR.png
+TGAA1-English-DLC-v1.0.5.cia
+TGAA1-Official-English-v2.8.5-QR.png
+TGAA1-Official-English-v2.8.5.cia

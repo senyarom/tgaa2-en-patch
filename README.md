@@ -24,7 +24,9 @@ Version 1.1.0 includes hardware-tested builds for both games.
   the original Capcom icon artwork;
 - TGAA2 contains 2,012 direct DLC text replacements, and all 42 rebuilt DLC
   GMD containers pass semantic round-trip checks;
-- line wrapping uses the final 3DS glyph advances and hardware-checked layout.
+- line wrapping uses the final 3DS glyph advances and hardware-checked layout;
+- TGAA1 DLC dialogue is paginated for the two-line 3DS text box, and every
+  main-game and DLC location caption fits the final font metrics.
 
 The leftmost DLC card intentionally has no text label in this release. This
 avoids corrupting the shared animated title-menu atlas; the card itself is
@@ -49,9 +51,9 @@ then install its update before its DLC.
 
 Base game: `000400000014AD00`
 
-1. `TGAA1-Official-English-v2.7.4.cia` — update
+1. `TGAA1-Official-English-v2.8.5.cia` — update
    (`0004000E0014AD00`);
-2. `TGAA1-English-DLC-v1.0.3.cia` — DLC
+2. `TGAA1-English-DLC-v1.0.5.cia` — DLC
    (`0004008C0014AD00`).
 
 ### The Great Ace Attorney 2: Resolve

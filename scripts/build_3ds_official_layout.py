@@ -14,6 +14,7 @@ from pathlib import Path
 from PIL import Image
 
 from dgs2tool.gmd import build_gmd_bytes, parse_gmd_bytes
+from dgs2tool.location_captions import compact_location_captions
 
 
 TAG_RE = re.compile(r"<[^>]*>")
@@ -23,21 +24,6 @@ WORD_INTERNAL_NEWLINE_RE = re.compile(
     r"((?:[A-Z]|<[^>]*>){16,})(?:\r\n|\n)(?=(?:[A-Z]|<[^>]*>){16,})"
 )
 SPECIAL_LAYOUT_TAGS = ("<CNTR>", "<SIZE ", "<RUBY>", "<RT>")
-LOCATION_CAPTION_RE = re.compile(
-    r"(?P<prefix><CNTR><E008><E025 7\.5><E003 10>)"
-    r"(?P<date>[^<>\r\n]+)\r\n"
-    r"(?P<location_prefix><CNTR><E003 5>)"
-    r"(?P<location>[^<>\r\n]+)"
-    r"(?P<suffix><E023>)"
-)
-CONCISE_LOCATION_NAMES = {
-    "Supreme Court of Judicature, Defendants' Antechamber 5":
-        "Supreme Court, Defendants' Antechamber 5",
-    "British Supreme Court, Lord Chief Justice's Office":
-        "Supreme Court, Lord Chief Justice's Office",
-}
-
-
 def _gfd_name_end(blob: bytes, header_size: int, float_count: int) -> int:
     offset = header_size + float_count * 4
     name_length = struct.unpack_from("<i", blob, offset)[0]
@@ -357,43 +343,7 @@ def reflow_location_captions(
     widths: dict[int, int],
     maximum: int,
 ) -> tuple[str, list[dict]]:
-    reports: list[dict] = []
-
-    def replace(match: re.Match[str]) -> str:
-        location = match.group("location")
-        original_width = line_width(location, widths)
-        if original_width <= maximum:
-            return match.group(0)
-        replacement = CONCISE_LOCATION_NAMES.get(location)
-        replacement_width = line_width(replacement, widths) if replacement else None
-        if replacement is None or replacement_width > maximum:
-            reports.append({
-                "status": "overflow",
-                "original_widths": [original_width],
-                "text": location,
-                "layout": "location_caption",
-            })
-            return match.group(0)
-        report = {
-            "status": "reflowed",
-            "original_widths": [original_width],
-            "new_widths": [replacement_width],
-            "text": replacement,
-            "original_text": location,
-            "layout": "location_caption",
-            "method": "concise_location_name",
-        }
-        reports.append(report)
-        return (
-            match.group("prefix")
-            + match.group("date")
-            + "\r\n"
-            + match.group("location_prefix")
-            + replacement
-            + match.group("suffix")
-        )
-
-    return LOCATION_CAPTION_RE.sub(replace, text), reports
+    return compact_location_captions(text, widths, maximum)
 
 
 def reflow_tree(root: Path, widths: dict[int, int], maximum: int) -> dict:
@@ -425,7 +375,7 @@ def reflow_tree(root: Path, widths: dict[int, int], maximum: int) -> dict:
                     reflowed += 1
                     if len(examples) < 30:
                         examples.append(report)
-                else:
+                elif report["status"] == "overflow":
                     overflows.append(report)
             if replacement != text:
                 entry["text"] = replacement
