@@ -2,7 +2,11 @@ import unittest
 
 from dgs2tool.location_captions import compact_location_captions
 from dgs2tool.pagination import dialogue_page_line_counts, paginate_dialogue_text, visible_text
-from scripts.build_3ds_official_layout import line_width, reflow_scenario_text
+from scripts.build_3ds_official_layout import (
+    apply_interactive_tutorial_overrides,
+    line_width,
+    reflow_scenario_text,
+)
 
 
 class PaginationTests(unittest.TestCase):
@@ -97,6 +101,65 @@ class PaginationTests(unittest.TestCase):
         )
         self.assertEqual(result, source)
         self.assertEqual(reports, [])
+
+    def test_preserves_interactive_tutorial_instruction_as_one_page(self):
+        source = (
+            "<E800 146><E041 21 14><E025 2.5>This is the list of evidence you've\r\n"
+            "collected.<E358><E003 13> Now try switching\r\n"
+            "to '<E014><E436><FONT 2>People<E437></FONT><E005>' instead with "
+            "<E086 0 0><E683>.<E027><E800 147><E650 1><E800 148><E024><PAGE>"
+        )
+        result, reports = paginate_dialogue_text(source)
+        self.assertEqual(result, source)
+        self.assertEqual(reports, [])
+
+        widths = {codepoint: 1 for codepoint in range(128)}
+        reflowed, reflow_reports = reflow_scenario_text(
+            source,
+            widths,
+            maximum=10,
+            max_lines=3,
+            dialogue_maximum=10,
+        )
+        self.assertEqual(reflowed, source)
+        self.assertEqual(len(reflow_reports), 1)
+        self.assertEqual(reflow_reports[0]["status"], "overflow")
+
+    def test_does_not_treat_e027_without_e650_as_interactive_wait(self):
+        source = (
+            "<E800 1><E041 1 0><E025 2.5>First line\r\n"
+            "second line\r\nthird line<E027><E023><PAGE>"
+        )
+        result, reports = paginate_dialogue_text(source)
+        self.assertEqual(dialogue_page_line_counts(result), [2, 1])
+        self.assertEqual(len(reports), 1)
+
+    def test_shortens_tgaa1_interactive_tutorial_without_changing_tags(self):
+        source = (
+            "<E800 137><E041 1 0><E025 3.5><E007>"
+            "(I just have to press <E005><E683><E007> for the "
+            "<E014><E436><FONT 2>Court Record<E437></FONT><E007>?<E003 14>\r\n"
+            "<E025 2.5>Alright, <E003 8><E341>there's no time to lose!)"
+            "<E027><E650 0><E024><PAGE>"
+            "<E041 21 14><E025 2.5>"
+            "This is the list of evidence you've collected.<E358><E003 13>\r\n"
+            "Now try switching to '<E014><E436><FONT 2>People<E437></FONT><E005>' "
+            "instead with <E086 0 0><E683>.<E027><E650 1><E024><PAGE>"
+            "<E041 21 14><E025 2.5>"
+            "You'll find details about the victim in here.<E358><E003 13>\r\n"
+            "When you're done,<E358><E003 6> just press <E684> to go "
+            "<E014><E436><FONT 2>back<E437></FONT><E005>."
+            "<E027><E650 2><E024><PAGE>"
+        )
+        result = apply_interactive_tutorial_overrides(
+            "_sce00_c001_0002_jpn.gmd",
+            "L_FLASH_END_00_00",
+            source,
+        )
+        self.assertIn("Here's your evidence.", result)
+        self.assertIn("The victim's details are here.", result)
+        self.assertEqual(result.count("<E027>"), 3)
+        self.assertEqual(result.count("<E650 "), 3)
 
 
 class LocationCaptionTests(unittest.TestCase):

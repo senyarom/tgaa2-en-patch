@@ -22,6 +22,10 @@ case "$GAME" in
         EXPECTED_CALL="4e 08 00 eb"
         HOOK_ISA=arm
         CIA_NAME="TGAA1-Official-English-v2.8.6-hook.cia"
+        TUTORIAL_SOURCE="$PROJECT_ROOT/work/private/dgs1-official-port-clean/romfs/script/_output/_sce00_c001_0002_jpn.gmd"
+        LAYOUT_FONT="$PROJECT_ROOT/work/private/dgs1-font-layout/archive-font00_jpn.gfd"
+        VALIDATION_FONT="$LAYOUT_FONT"
+        DIALOGUE_MAXIMUM=265
         ;;
     tgaa2)
         SOURCE_BUILD="${SOURCE_BUILD:-$PROJECT_ROOT/work/private/tgaa2-court-record-fix/build-v233}"
@@ -35,6 +39,8 @@ case "$GAME" in
         EXPECTED_CALL="99 08 00 eb"
         HOOK_ISA=thumb
         CIA_NAME="DGS2-Official-English-v2.3.3-hook.cia"
+        VALIDATION_FONT="$PROJECT_ROOT/work/private/tgaa2-court-record-fix/ui-cmn/UI/0_system/00_font/font00_jpn.gfd"
+        DIALOGUE_MAXIMUM=365
         ;;
     *)
         echo "Usage: $0 [tgaa1|tgaa2] [output-dir]" >&2
@@ -79,8 +85,23 @@ HOOK_MAP="$OUTPUT_DIR/court-record-hook.map"
 PATCHED_CODE="$OUTPUT_DIR/code.bin"
 PATCHED_EXHEADER="$OUTPUT_DIR/exheader.bin"
 GENERATED_RSF="$OUTPUT_DIR/update.rsf"
+STAGED_ROMFS="$OUTPUT_DIR/romfs"
 CONTENT="$OUTPUT_DIR/content.cxi"
 CIA="$OUTPUT_DIR/$CIA_NAME"
+
+PREPARE_ROMFS_ARGS=()
+if [[ "$GAME" == tgaa1 ]]; then
+    PREPARE_ROMFS_ARGS+=(
+        --tgaa1-tutorial-source "$TUTORIAL_SOURCE"
+        --font "$LAYOUT_FONT"
+    )
+fi
+python3 "$REPO_ROOT/scripts/prepare_hook_romfs.py" \
+    "$SOURCE_BUILD/romfs" \
+    "$STAGED_ROMFS" \
+    --validation-font "$VALIDATION_FONT" \
+    --dialogue-maximum "$DIALOGUE_MAXIMUM" \
+    ${PREPARE_ROMFS_ARGS[@]+"${PREPARE_ROMFS_ARGS[@]}"}
 
 # Azahar historically allowed execution from non-executable CodeSet pages, while
 # real hardware does not. Refuse to build outside the text mapping and extend the
@@ -176,7 +197,7 @@ python3 "$REPO_ROOT/scripts/inject_court_record_hook.py" \
     "$HOOK_BIN" \
     "$PATCHED_CODE"
 
-python3 - "$SOURCE_BUILD/update.rsf" "$GENERATED_RSF" "$SOURCE_BUILD/romfs" <<'PY'
+python3 - "$SOURCE_BUILD/update.rsf" "$GENERATED_RSF" "$STAGED_ROMFS" <<'PY'
 from pathlib import Path
 import sys
 

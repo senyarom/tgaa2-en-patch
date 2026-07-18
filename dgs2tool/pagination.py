@@ -17,6 +17,7 @@ PAGE_RE = re.compile(r"<PAGE>")
 NEWLINE_RE = re.compile(r"\r\n|\n|\r")
 SPEAKER_RE = re.compile(r"<E041(?:\s[^>]*)?>")
 TRACKING_RE = re.compile(r"<E025(?:\s[^>]*)?>")
+INTERACTIVE_WAIT_RE = re.compile(r"<E027>.*?<E650(?:\s[^>]*)?>", re.DOTALL)
 SENTENCE_END_RE = re.compile(r"(?:[.!?]|\.{3})[\"')\]]*$")
 
 
@@ -52,6 +53,16 @@ def is_standard_dialogue_segment(segment: str) -> bool:
     return first_visible is not None and bool(
         SPEAKER_RE.search(segment, 0, first_visible)
     )
+
+
+def is_interactive_tutorial_segment(segment: str) -> bool:
+    """Return whether the page ends by waiting for a tutorial action.
+
+    E027 disables ordinary dialogue advance and E650 waits for an action such
+    as opening the Court Record or switching its tab.  These instructions must
+    remain on the single hand-authored page preceding that wait.
+    """
+    return bool(INTERACTIVE_WAIT_RE.search(segment))
 
 
 def _visible_lines(segment: str) -> list[dict]:
@@ -208,7 +219,9 @@ def paginate_dialogue_text(
                 output.append(segment)
                 continue
             has_speaker = is_standard_dialogue_segment(segment)
-            if (skip_without_speaker and not has_speaker) or any(
+            if is_interactive_tutorial_segment(segment) or (
+                skip_without_speaker and not has_speaker
+            ) or any(
                 tag in segment for tag in skip_tags
             ):
                 output.append(segment)

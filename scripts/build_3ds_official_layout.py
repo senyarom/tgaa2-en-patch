@@ -15,7 +15,11 @@ from PIL import Image
 
 from dgs2tool.gmd import build_gmd_bytes, parse_gmd_bytes
 from dgs2tool.location_captions import compact_location_captions
-from dgs2tool.pagination import is_standard_dialogue_segment, paginate_dialogue_text
+from dgs2tool.pagination import (
+    is_interactive_tutorial_segment,
+    is_standard_dialogue_segment,
+    paginate_dialogue_text,
+)
 
 
 TAG_RE = re.compile(r"<[^>]*>")
@@ -41,6 +45,52 @@ OPENING_MOVIE_MAXIMUM_WIDTH = 304
 DEFAULT_COURT_RECORD_OVERRIDES = (
     Path(__file__).resolve().parents[1] / "translation" / "court-record-en.jsonl"
 )
+INTERACTIVE_TUTORIAL_FILE = "_sce00_c001_0002_jpn.gmd"
+INTERACTIVE_TUTORIAL_LABEL = "L_FLASH_END_00_00"
+INTERACTIVE_TUTORIAL_REPLACEMENTS = (
+    (
+        "(I just have to press <E005><E683><E007> for the "
+        "<E014><E436><FONT 2>Court Record<E437></FONT><E007>?<E003 14>\r\n"
+        "<E025 2.5>Alright, <E003 8><E341>there's no time to lose!)",
+        "(Press <E005><E683><E007> for the "
+        "<E014><E436><FONT 2>Court Record<E437></FONT><E007>?<E003 14>\r\n"
+        "<E025 2.5>Alright, <E003 8><E341>let's do it!)",
+    ),
+    (
+        "This is the list of evidence you've collected.<E358><E003 13>\r\n"
+        "Now try switching to '<E014><E436><FONT 2>People<E437></FONT><E005>' "
+        "instead with <E086 0 0><E683>.",
+        "Here's your evidence.<E358><E003 13>\r\n"
+        "Switch to '<E014><E436><FONT 2>People<E437></FONT><E005>' "
+        "with <E086 0 0><E683>.",
+    ),
+    (
+        "You'll find details about the victim in here.<E358><E003 13>\r\n"
+        "When you're done,<E358><E003 6> just press <E684> to go "
+        "<E014><E436><FONT 2>back<E437></FONT><E005>.",
+        "The victim's details are here.<E358><E003 13>\r\n"
+        "Then<E358><E003 6> press <E684> to go "
+        "<E014><E436><FONT 2>back<E437></FONT><E005>.",
+    ),
+)
+
+
+def apply_interactive_tutorial_overrides(
+    filename: str,
+    label: str | None,
+    text: str,
+) -> str:
+    if filename != INTERACTIVE_TUTORIAL_FILE or label != INTERACTIVE_TUTORIAL_LABEL:
+        return text
+
+    replacement = text
+    for original, concise in INTERACTIVE_TUTORIAL_REPLACEMENTS:
+        if original not in replacement:
+            raise ValueError(f"interactive tutorial wording changed in {filename}:{label}")
+        replacement = replacement.replace(original, concise, 1)
+    if TAG_RE.findall(replacement) != TAG_RE.findall(text):
+        raise ValueError("interactive tutorial override changed control tags")
+    return replacement
 
 
 def _gfd_name_end(blob: bytes, header_size: int, float_count: int) -> int:
@@ -244,6 +294,8 @@ def reflow_segment(
     widths: dict[int, int],
     maximum: int,
     max_lines: int = 3,
+    *,
+    constrain_to_max_lines: bool = False,
 ) -> tuple[str, dict | None]:
     leading_match = LEADING_NEWLINES_RE.match(segment)
     leading = leading_match.group() if leading_match else ""
@@ -252,17 +304,19 @@ def reflow_segment(
         return segment, None
 
     original_lines = [line for line in visible(body).splitlines() if line.strip()]
-    if not original_lines or len(original_lines) > max_lines:
+    if not original_lines or (
+        len(original_lines) > max_lines and not constrain_to_max_lines
+    ):
         return segment, None
     original_widths = [line_width(line, widths) for line in original_lines]
-    if max(original_widths) <= maximum:
+    if len(original_lines) <= max_lines and max(original_widths) <= maximum:
         return segment, None
 
     normalized = WORD_INTERNAL_NEWLINE_RE.sub(r"\1", body)
     normalized = INTERNAL_NEWLINE_RE.sub(" ", normalized)
     opportunities = candidate_breaks(normalized)
     best: tuple[tuple[int, int, int], list[tuple[int, int]], list[int]] | None = None
-    minimum_lines = max(2, len(original_lines))
+    minimum_lines = 2 if constrain_to_max_lines else max(2, len(original_lines))
     for line_count in range(minimum_lines, max_lines + 1):
         ideal = line_width(normalized, widths) / line_count
 
@@ -376,7 +430,13 @@ def reflow_scenario_text(
     reports: list[dict] = []
     output: list[str] = []
     for page_index, segment in enumerate(segments):
-        if is_standard_dialogue_segment(segment):
+        interactive_tutorial = is_interactive_tutorial_segment(segment)
+        if interactive_tutorial:
+            # E027/E650 waits cannot be continued with A. Reflow the complete
+            # instruction onto one dialogue page, but never paginate it.
+            segment_maximum = dialogue_maximum
+            segment_max_lines = MAIN_DIALOGUE_MAXIMUM_LINES
+        elif is_standard_dialogue_segment(segment):
             segment_maximum = dialogue_maximum
             segment_max_lines = MAIN_DIALOGUE_REFLOW_MAXIMUM_LINES
         else:
@@ -387,6 +447,7 @@ def reflow_scenario_text(
             widths,
             segment_maximum,
             segment_max_lines,
+            constrain_to_max_lines=interactive_tutorial,
         )
         if report is not None:
             report["page"] = page_index
@@ -505,6 +566,12 @@ def reflow_tree(
             text = entry.get("text")
             if text is None:
                 continue
+            original_text = text
+            text = apply_interactive_tutorial_overrides(
+                path.name,
+                entry.get("label"),
+                text,
+            )
             if path.name in COURT_RECORD_CAPTION_FILES and entry.get("label") != "null":
                 override_key = (
                     path.name,
@@ -553,7 +620,7 @@ def reflow_tree(
                         examples.append(report)
                 elif report["status"] == "overflow":
                     overflows.append(report)
-            if replacement != text:
+            if replacement != original_text:
                 entry["text"] = replacement
                 entry["text_hex"] = ""
                 file_changed = True
