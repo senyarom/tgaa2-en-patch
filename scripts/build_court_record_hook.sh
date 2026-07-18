@@ -25,7 +25,9 @@ case "$GAME" in
         CIA_NAME="TGAA1-Official-English-v2.8.6.cia"
         TUTORIAL_SOURCE="${TUTORIAL_SOURCE:-$GAME_DATA_ROOT/tgaa1/tutorial.gmd}"
         LAYOUT_FONT="${LAYOUT_FONT:-$GAME_DATA_ROOT/tgaa1/font.gfd}"
-        VALIDATION_FONT="$LAYOUT_FONT"
+        # Ordinary dialogue is rendered with font03; font00 above is the
+        # wider Court Record font used by the dedicated tutorial rebuild.
+        VALIDATION_FONT="${VALIDATION_FONT:-$GAME_DATA_ROOT/tgaa1/dialogue-font.gfd}"
         DIALOGUE_MAXIMUM=265
         ;;
     tgaa2)

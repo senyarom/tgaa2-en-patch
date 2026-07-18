@@ -122,7 +122,7 @@ used to launch an emulator, not to build either update CIA.
 
 Each game-data directory contains the current `code.bin`, `exheader.bin`,
 `icon.bin`, `update.rsf`, `romfs/`, and `base.cxi`. TGAA1 additionally needs
-`tutorial.gmd`; both games need `font.gfd`. Put `makerom` at
+`tutorial.gmd` and `dialogue-font.gfd`; both games need `font.gfd`. Put `makerom` at
 `game-data/tools/makerom` or set `MAKEROM`; set `DEVKITARM` if devkitARM is not
 installed at its standard path. Running without `--build-only` installs the
 newly built CIA into an isolated Azahar profile under `build/` and launches

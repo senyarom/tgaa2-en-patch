@@ -131,15 +131,23 @@ def steam_archive(steam: Path, game_code: str, filename: str) -> Path:
 
 def rebuild_font_archive(
     game_code: str, steam: Path, romfs: Path, work: Path
-) -> Path:
+) -> tuple[Path, Path]:
     archive_path = romfs / "archive" / "UI_cmn_jpn.arc"
     source = work / "ui-3ds"
     pc = work / "ui-pc"
     extract_arc(archive_path, source)
     extract_arc(steam_archive(steam, game_code, "font_eng.arc"), pc)
     source_gfd = next(source.rglob("font00_jpn.gfd"))
+    dialogue_gfd = (
+        next(source.rglob("font03_jpn.gfd")) if game_code == "GO" else source_gfd
+    )
     source_atlas = next(source.rglob("font00_jpn_00_AM_NOMIP.tex"))
-    pc_gfd = next(pc.rglob("font00_eng.gfd"))
+    # TGAA1 intentionally uses the broad font02 character set.  Besides
+    # covering the complete English script, its wider advances are the ones
+    # used by the released 3DS layout.  TGAA2 retains Scarlet Study's narrower
+    # font00-based metrics.
+    pc_font_name = "font02.gfd" if game_code == "GO" else "font00_eng.gfd"
+    pc_gfd = next(pc.rglob(pc_font_name))
     adapted = work / "font00_jpn.gfd"
     adapt_3ds_gfd(
         source_gfd,
@@ -151,7 +159,7 @@ def rebuild_font_archive(
     archive = parse_arc(archive_path.read_bytes())
     entry = next(item for item in archive["entries"] if item.name.endswith("font00_jpn.gfd"))
     archive_path.write_bytes(build_arc_bytes(archive, {entry.name: adapted.read_bytes()}))
-    return adapted
+    return adapted, dialogue_gfd
 
 
 def rebuild_message_archive(
@@ -355,7 +363,9 @@ def materialize_game(
             ROOT / "scripts/apply_tgaa1_3ds_wording.py",
             candidate / "romfs" / "script" / "_output",
         )
-    font = rebuild_font_archive(game_code, steam, candidate / "romfs", work)
+    font, dialogue_font = rebuild_font_archive(
+        game_code, steam, candidate / "romfs", work
+    )
     rebuild_message_archive(game, game_code, steam, candidate / "romfs", work)
     rebuild_title_archive(japanese, candidate / "romfs", work)
     component_source = work / "component-source"
@@ -414,6 +424,9 @@ def materialize_game(
 
     shutil.copy2(font, output / "font.gfd")
     if game == "tgaa1":
+        # TGAA1's normal dialogue uses font03.  font00 is deliberately wider
+        # and is retained separately for the Court Record and its tutorial.
+        shutil.copy2(dialogue_font, output / "dialogue-font.gfd")
         tutorial = output / "romfs/script/_output/_sce00_c001_0002_jpn.gmd"
         shutil.copy2(tutorial, output / "tutorial.gmd")
 
