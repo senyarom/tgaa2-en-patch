@@ -96,6 +96,30 @@ with the mandatory native hook using:
 ./run.sh tgaa2 --build-only
 ```
 
+To recreate those inputs from upstream releases, run
+`scripts/import_game_data.py`. It accepts the supported Japanese base CIAs,
+Scarlet Study TGAA1 v2.4.1 and TGAA2 v2.1.0 update CIAs, the extracted Steam
+`nativeDX11x64` directory, `ctrtool`, and a local `seeddb.bin`. The importer
+checks all four CIA SHA-256 hashes before extracting anything, ports the Steam
+localization again, and applies the repository's checksummed legacy delta for
+the historically hand-built release state. For example:
+
+```sh
+python3 scripts/import_game_data.py \
+  --tgaa1-base-cia /path/to/tgaa1-base.cia \
+  --tgaa1-scarlet-cia /path/to/tgaa1-scarlet-v2.4.1.cia \
+  --tgaa2-base-cia /path/to/tgaa2-base.cia \
+  --tgaa2-scarlet-cia /path/to/tgaa2-scarlet-v2.1.0.cia \
+  --seeddb /path/to/seeddb.bin \
+  --steam-root /path/to/nativeDX11x64 \
+  --ctrtool /path/to/ctrtool \
+  --output game-data-recreated
+```
+
+The generated `tgaa1/` and `tgaa2/` directories are sufficient for
+`--build-only`. `base.cxi` is intentionally not recreated because it is only
+used to launch an emulator, not to build either update CIA.
+
 Each game-data directory contains the current `code.bin`, `exheader.bin`,
 `icon.bin`, `update.rsf`, `romfs/`, and `base.cxi`. TGAA1 additionally needs
 `tutorial.gmd`; both games need `font.gfd`. Put `makerom` at
@@ -104,8 +128,8 @@ installed at its standard path. Running without `--build-only` installs the
 newly built CIA into an isolated Azahar profile under `build/` and launches
 the selected base game.
 
-The repository does not contain Japanese CIAs, Steam depots, title keys,
-seeds, or extracted game assets. Development inputs belong under ignored
+The repository does not contain Japanese or Scarlet CIAs, Steam depots, title
+keys, seeds, or extracted game assets. Development inputs belong under ignored
 `private/` or `game-data/` directories.
 
 Run the tooling tests with Python 3.10 or newer:

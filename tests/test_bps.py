@@ -2,7 +2,7 @@ import struct
 import unittest
 import zlib
 
-from dgs2tool.bps import apply_bps, inspect_bps
+from dgs2tool.bps import apply_bps, create_bps, inspect_bps
 
 
 def encode_number(value: int) -> bytes:
@@ -31,6 +31,15 @@ def literal_patch(source: bytes, target: bytes) -> bytes:
 
 
 class BpsTests(unittest.TestCase):
+    def test_created_patch_round_trips_mixed_runs(self):
+        source = b"same-OLD-same-tail"
+        target = b"same-NEW-same-longer-tail!"
+        patch = create_bps(source, target, b"test")
+        self.assertEqual(apply_bps(source, patch), target)
+        report = inspect_bps(patch)
+        self.assertTrue(report["patch_crc_valid"])
+        self.assertEqual(report["metadata"], "test")
+
     def test_literal_patch(self):
         source = b"abc"
         target = b"translated"

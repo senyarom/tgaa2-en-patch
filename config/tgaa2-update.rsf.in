@@ -1,0 +1,169 @@
+Option:
+  EnableCrypt: false
+  EnableCompress: false
+  UseOnSD: true
+
+AccessControlInfo:
+  CoreVersion: 2
+  Priority: 16
+  SystemMode: prod
+  SystemModeExt: Legacy
+  CpuSpeed: 268mhz
+  IdealProcessor: 0
+  AffinityMask: 1
+  MaxCpu: 158
+  MemoryType: Application
+  HandleTableSize: 0x200
+  ReleaseKernelMajor: 2
+  ReleaseKernelMinor: 52
+  ResourceLimitCategory: application
+  ExtSaveDataId: 0x1AE2
+  DescVersion: 3
+  ServiceAccessControl:
+    - $hioFIO
+    - $hostio0
+    - $hostio1
+    - cfg:u
+    - fs:USER
+    - gsp::Gpu
+    - hid:USER
+    - ndm:u
+    - pxi:dev
+    - APT:A
+    - ac:u
+    - act:u
+    - am:app
+    - boss:U
+    - cam:u
+    - cecd:u
+    - dlp:FKCL
+    - dlp:SRVR
+    - dsp::DSP
+    - frd:u
+    - http:C
+    - ir:USER
+    - ldr:ro
+    - mic:u
+    - news:u
+    - nfc:u
+    - nim:aoc
+    - nwm::UDS
+    - ptm:u
+    - qtm:u
+    - soc:U
+    - ssl:C
+    - y2r:u
+  IORegisterMapping:
+    - 1FF50000-1FF57FFF
+    - 1FF70000-1FF77FFF
+  MemoryMapping:
+    - "1F000000-1F5FFFFF:r"
+  SystemCallAccess:
+    ControlMemory: 0x01
+    QueryMemory: 0x02
+    ExitProcess: 0x03
+    GetProcessIdealProcessor: 0x06
+    CreateThread: 0x08
+    ExitThread: 0x09
+    SleepThread: 0x0A
+    GetThreadPriority: 0x0B
+    SetThreadPriority: 0x0C
+    GetThreadIdealProcessor: 0x0F
+    GetCurrentProcessorNumber: 0x11
+    CreateMutex: 0x13
+    ReleaseMutex: 0x14
+    CreateSemaphore: 0x15
+    ReleaseSemaphore: 0x16
+    CreateEvent: 0x17
+    SignalEvent: 0x18
+    ClearEvent: 0x19
+    CreateTimer: 0x1A
+    SetTimer: 0x1B
+    CancelTimer: 0x1C
+    ClearTimer: 0x1D
+    CreateMemoryBlock: 0x1E
+    MapMemoryBlock: 0x1F
+    UnmapMemoryBlock: 0x20
+    CreateAddressArbiter: 0x21
+    ArbitrateAddress: 0x22
+    CloseHandle: 0x23
+    WaitSynchronization1: 0x24
+    WaitSynchronizationN: 0x25
+    DuplicateHandle: 0x27
+    GetSystemTick: 0x28
+    GetHandleInfo: 0x29
+    GetSystemInfo: 0x2A
+    GetProcessInfo: 0x2B
+    GetThreadInfo: 0x2C
+    ConnectToPort: 0x2D
+    SendSyncRequest1: 0x2E
+    SendSyncRequest2: 0x2F
+    SendSyncRequest3: 0x30
+    SendSyncRequest4: 0x31
+    SendSyncRequest: 0x32
+    GetProcessId: 0x35
+    GetProcessIdOfThread: 0x36
+    GetThreadId: 0x37
+    GetResourceLimit: 0x38
+    GetResourceLimitLimitValues: 0x39
+    GetResourceLimitCurrentValues: 0x3A
+    GetThreadContext: 0x3B
+    Break: 0x3C
+    OutputDebugString: 0x3D
+
+SystemControlInfo:
+  AppType: application
+  StackSize: 0x20000
+  RemasterVersion: 1
+  SaveDataSize: 128K
+  JumpId: 0x00040000001AE200
+  Dependency:
+    dep00: 0x0004013000002402
+    dep01: 0x0004013000003802
+    dep02: 0x0004013000001502
+    dep03: 0x0004013000003402
+    dep04: 0x0004013000001602
+    dep05: 0x0004013000002602
+    dep06: 0x0004013000001702
+    dep07: 0x0004013000001802
+    dep08: 0x0004013000002702
+    dep09: 0x0004013000002802
+    dep10: 0x0004013000001A02
+    dep11: 0x0004013000003202
+    dep12: 0x0004013000001B02
+    dep13: 0x0004013000001C02
+    dep14: 0x0004013000001D02
+    dep15: 0x0004013000002902
+    dep16: 0x0004013000001E02
+    dep17: 0x0004013000003302
+    dep18: 0x0004013000001F02
+    dep19: 0x0004013000002002
+    dep20: 0x0004013000002B02
+    dep21: 0x0004013000003502
+    dep22: 0x0004013000004002
+    dep23: 0x0004013000002C02
+    dep24: 0x0004013000002D02
+    dep25: 0x0004013000002102
+    dep26: 0x0004013000003102
+    dep27: 0x0004013000002202
+    dep28: 0x0004013020004202
+    dep29: 0x0004013000003702
+    dep30: 0x0004013000002E02
+    dep31: 0x0004013000002302
+    dep32: 0x0004013000002F02
+
+BasicInfo:
+  Title: BB
+  CompanyCode: "00"
+  ProductCode: CTR-U-AJ2J
+  ContentType: Application
+
+RomFs:
+  RootPath: @ROMFS@
+
+TitleInfo:
+  Platform: ctr
+  Category: Patch
+  TargetCategory: Application
+  UniqueId: 0x1AE2
+  Version: 0

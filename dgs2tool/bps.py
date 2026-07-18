@@ -41,6 +41,58 @@ def _crc(data: bytes) -> int:
     return zlib.crc32(data) & 0xFFFFFFFF
 
 
+def _number(value: int) -> bytes:
+    """Encode the unsigned variable-length integer used by BPS1."""
+    if value < 0:
+        raise ValueError("BPS numbers cannot be negative")
+    output = bytearray()
+    while True:
+        byte = value & 0x7F
+        value >>= 7
+        if value == 0:
+            output.append(byte | 0x80)
+            return bytes(output)
+        output.append(byte)
+        value -= 1
+
+
+def create_bps(source: bytes, target: bytes, metadata: bytes = b"") -> bytes:
+    """Create a deterministic BPS patch using equal-offset runs and literals.
+
+    This deliberately small writer is sufficient for repository-owned legacy
+    deltas: unchanged spans become SourceRead actions and differing spans are
+    stored as TargetRead literals.  The reader supports the full BPS format.
+    """
+    patch = bytearray(b"BPS1")
+    patch.extend(_number(len(source)))
+    patch.extend(_number(len(target)))
+    patch.extend(_number(len(metadata)))
+    patch.extend(metadata)
+
+    offset = 0
+    while offset < len(target):
+        equal = offset < len(source) and source[offset] == target[offset]
+        end = offset + 1
+        if equal:
+            while end < len(target) and end < len(source) and source[end] == target[end]:
+                end += 1
+            mode = 0
+        else:
+            while end < len(target) and not (
+                end < len(source) and source[end] == target[end]
+            ):
+                end += 1
+            mode = 1
+        patch.extend(_number(((end - offset - 1) << 2) | mode))
+        if mode == 1:
+            patch.extend(target[offset:end])
+        offset = end
+
+    patch.extend(struct.pack("<II", _crc(source), _crc(target)))
+    patch.extend(struct.pack("<I", _crc(patch)))
+    return bytes(patch)
+
+
 def _header(patch: bytes) -> tuple[_Reader, int, int, bytes]:
     if len(patch) < 16 or patch[:4] != b"BPS1":
         raise ValueError("not a BPS1 patch")

@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "files": 3,
+  "patches": [
+    {
+      "path": "code.bin",
+      "patch": "patches/0000.bps",
+      "source_sha256": "45590c4d9f0fa9468b681c6ca47e04c78235d6765d06f161c6df9bb3b705e485",
+      "target_sha256": "b5d6ae6d32f73b6e8427ad5c4176bff3722413a43f34dcd08e496368662475d5"
+    },
+    {
+      "path": "exheader.bin",
+      "patch": "patches/0001.bps",
+      "source_sha256": "058bb861a82ece1eb3f4062a46f3175a03590eba73d2e44d639cc234de190944",
+      "target_sha256": "28fd592ecc1c61b9dc5ddf6425de7f1b9226176cb897d3b940a8e38a69143d65"
+    },
+    {
+      "path": "icon.bin",
+      "patch": "patches/0002.bps",
+      "source_sha256": "bfb668119042979910be781841527bd6ff9d36b9c21088acc553595bc9989021",
+      "target_sha256": "a1ce1869adbf098484b5a7429d8ddbbd391c49502301997fbeaacf9ab56c06c5"
+    }
+  ]
+}

@@ -14,7 +14,7 @@ from .batch import (
     port_official_message_tree,
     stage_layeredfs,
 )
-from .bps import apply_bps, inspect_bps
+from .bps import apply_bps, create_bps, inspect_bps
 from .firm import extract_firm
 from .gmd import build_gmd, build_gmd_bytes, dump_gmd, parse_gmd_bytes, semantic_signature
 from .ips import apply_ips, create_ips
@@ -57,6 +57,11 @@ def build_parser() -> argparse.ArgumentParser:
     command = sub.add_parser("bps-apply", help="apply a BPS1 patch")
     command.add_argument("source", type=Path)
     command.add_argument("patch", type=Path)
+    command.add_argument("output", type=Path)
+
+    command = sub.add_parser("bps-create", help="create a deterministic BPS1 patch")
+    command.add_argument("source", type=Path)
+    command.add_argument("target", type=Path)
     command.add_argument("output", type=Path)
 
     command = sub.add_parser("ips-create", help="create an IPS patch from equal-length files")
@@ -182,6 +187,12 @@ def main(argv: list[str] | None = None) -> int:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_bytes(output)
         print(f"wrote {len(output)} bytes to {args.output}")
+        return 0
+
+    if args.command == "bps-create":
+        patch = create_bps(args.source.read_bytes(), args.target.read_bytes())
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_bytes(patch)
         return 0
 
     if args.command == "ips-create":

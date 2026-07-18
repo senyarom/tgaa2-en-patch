@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "files": 882,
+  "patches": [
+    {
+      "path": "archive/UI_cmn_jpn.arc",
+      "patch": "patches/0000.bps",
+      "source_sha256": "444154a69f304313d858e30af5ee9ca4d361a96ccbe580bdbc4153ac4a929fbe",
+      "target_sha256": "9cf578f3ec171fe0a48e1dd237cab82cfd9694ee5f992d124f3333a7065433ee"
+    },
+    {
+      "path": "archive/msg_cmn_jpn.arc",
+      "patch": "patches/0001.bps",
+      "source_sha256": "1ed42c43e2021716135010dd219a738030a619963eb0719e47a42fb7516732bf",
+      "target_sha256": "e55460f6881e6325c8ecc156d01c234c72787e0237b9b41e633f7f0f9e2e2f7b"
+    },
+    {
+      "path": "archive/title_jpn.arc",
+      "patch": "patches/0002.bps",
+      "source_sha256": "5bc1ec9b070bf0cf106e8a93b9090ed107231e40c29fa25fbd0df0f76816b8d3",
+      "target_sha256": "3e6cf26b7a7346e71968054b1053061a0cf2d8c16074d1f2c003f5c93981d140"
+    },
+    {
+      "path": "msg/movie_subtitle_jpn.gmd",
+      "patch": "patches/0003.bps",
+      "source_sha256": "4126cb8642a47d64d15609a869c133f1c5e99651efd4f0e31e7372d0c871acc5",
+      "target_sha256": "c37c083d391489fa6f02ec23f75b14301a29d68154f69d284c0b107f92aa25dd"
+    },
+    {
+      "path": "script/_output/_sce00_c001_0000_jpn.gmd",
+      "patch": "patches/0004.bps",
+      "source_sha256": "82927746c06c8813264487f02d3c1d180ebf27ed1d39e7420f6db6bb656330e0",
+      "target_sha256": "6d8527efe1ef34650f27b3c193980bdb0b8f98f2097ea172a2c8d6d1fc110b3c"
+    },
+    {
+      "path": "script/_output/_sce00_c002_0020_jpn.gmd",
+      "patch": "patches/0005.bps",
+      "source_sha256": "64010825429948eef7c84dc6ffca3f78a3737383b8547285aa55a20b4c34e954",
+      "target_sha256": "707215e6bf02c1026189f259b256c960d0a864dec6074f4e2cc14b2d9d0676fc"
+    },
+    {
+      "path": "script/_output/_sce00_c003_0010_jpn.gmd",
+      "patch": "patches/0006.bps",
+      "source_sha256": "8d2115409514b40c10a9a1449bb382e9e66f464648f292cdc315155c60d073e1",
+      "target_sha256": "e43d09d4bb3084ec4cfb4ad206d68ba15bf384acff3fe6b44d4c6fe4481e4a90"
+    },
+    {
+      "path": "script/_output/_sce01_c200_0050_jpn.gmd",
+      "patch": "patches/0007.bps",
+      "source_sha256": "164287aab1a12bed864091ad3899bafa3a74d2918019a02d1924af82d6a87c3b",
+      "target_sha256": "b5e2ed7d85b7fcd07ee1432bb5d3f4a1b3f10a8525c8c6f2bdfccf76c1451ae1"
+    },
+    {
+      "path": "script/_output/_sce01_c302_0020_jpn.gmd",
+      "patch": "patches/0008.bps",
+      "source_sha256": "6a1012f5c36e7dfe5b4229693fc34ca9c5137bf285007ce57a40b4667c924825",
+      "target_sha256": "6ab4ef1702b18293ad0cc67cf7e0f62b59d77a12becaef571d2503e7fc7bfefd"
+    },
+    {
+      "path": "script/_output/_sce02_c305_0010_jpn.gmd",
+      "patch": "patches/0009.bps",
+      "source_sha256": "70c6b82c991a48cac1cc7512df97d1e8ab2af520e752077da0e48069ca2edb79",
+      "target_sha256": "4a44be9398e0c511bba7e0878474460d27e46099631df8ef2d46e66ea0362864"
+    }
+  ]
+}
