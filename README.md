@@ -101,8 +101,8 @@ To recreate those inputs from upstream releases, run
 Scarlet Study TGAA1 v2.4.1 and TGAA2 v2.1.0 update CIAs, the extracted Steam
 `nativeDX11x64` directory, `ctrtool`, and a local `seeddb.bin`. The importer
 checks all four CIA SHA-256 hashes before extracting anything, ports the Steam
-localization again, and applies the repository's checksummed legacy delta for
-the historically hand-built release state. For example:
+localization again, rebuilds the 3DS fonts and message archives, and reapplies
+the named code, title-menu, metadata, and layout transformations. For example:
 
 ```sh
 python3 scripts/import_game_data.py \

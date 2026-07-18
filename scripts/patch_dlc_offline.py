@@ -38,6 +38,15 @@ def main() -> None:
 
     data = bytearray(args.source.read_bytes())
 
+    # The restored local catalogue uses its first DLC card. Skip the content
+    # loop only for an empty list (BMI), not when exactly one card exists (BLE).
+    replace(
+        data,
+        0x0021_3B80,
+        bytes.fromhex("0c 00 00 da"),
+        bytes.fromhex("0c 00 00 4a"),
+    )
+
     # State 6 normally launches the NIM/AOC entitlement request.  Go straight
     # to state 9, which builds the DLC screen and reads the installed content.
     replace(

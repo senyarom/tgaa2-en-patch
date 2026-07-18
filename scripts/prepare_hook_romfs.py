@@ -292,6 +292,28 @@ def main() -> None:
         shutil.rmtree(args.output_romfs)
     shutil.copytree(args.source_romfs, args.output_romfs)
 
+    # Imported game data deliberately keeps the official Steam wording and
+    # 3DS control structure free of historical line-break snapshots.  Every
+    # build derives the complete layout from the selected game's final font.
+    widths = read_3ds_advances(args.validation_font)
+    layout_report = reflow_tree(
+        args.output_romfs,
+        widths,
+        maximum=365,
+        dialogue_maximum=args.dialogue_maximum,
+    )
+    if layout_report["overflow_pages"]:
+        raise RuntimeError(
+            f"game layout has {layout_report['overflow_pages']} overflow(s): "
+            f"{layout_report['overflows']}"
+        )
+    print(
+        "Rebuilt game layout: "
+        f"files={layout_report['changed_files']}, "
+        f"pages={layout_report['reflowed_pages']}, "
+        f"paginated={layout_report['paginated_pages']}."
+    )
+
     if args.tgaa1_tutorial_source is not None:
         if args.font is None:
             raise ValueError("--font is required with --tgaa1-tutorial-source")
