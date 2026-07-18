@@ -341,9 +341,14 @@ def main() -> None:
             for kind in ("E041", "E260", "E521")
         )
     )
+    # TGAA1 movies use the wider font00 metrics, while ordinary dialogue uses
+    # font03.  TGAA2 uses its validation font for both layouts.
+    movie_font = args.font if args.game == "tgaa1" else args.validation_font
+    if movie_font is None:
+        raise ValueError("--font is required for TGAA1 movie layout")
     subtitle_pages, opening_pages = rebuild_and_validate_movie_text(
         args.output_romfs,
-        args.validation_font,
+        movie_font,
         apply_tgaa1_ui_overrides=args.game == "tgaa1",
         apply_tgaa2_court_record_layout=args.game == "tgaa2",
     )
