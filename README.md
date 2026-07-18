@@ -1,5 +1,9 @@
 # The Great Ace Attorney 1 & 2 — English 3DS patches
 
+N.B.: I use Codex to build the tooling around the patch.
+Testing is done using the Azahar Emulator and a real New 3DS XL.
+I have yet to finish both games with the patches so expect issues.
+
 Unofficial English patches for the Japanese Nintendo 3DS releases of *Dai
 Gyakuten Saiban* (*The Great Ace Attorney: Adventures*) and *Dai Gyakuten
 Saiban 2* (*The Great Ace Attorney 2: Resolve*).
