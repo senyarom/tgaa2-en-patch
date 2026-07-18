@@ -1,0 +1,25 @@
+name: Clean up v1.2.0 publishing run
+
+on:
+  workflow_run:
+    workflows:
+      - Replace v1.2.0 release assets as bot
+    types:
+      - completed
+
+permissions:
+  actions: write
+
+jobs:
+  delete-publishing-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete the completed publishing run
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+        run: |
+          set -euo pipefail
+          gh api \
+            --method DELETE \
+            "repos/${GITHUB_REPOSITORY}/actions/runs/${RUN_ID}"
