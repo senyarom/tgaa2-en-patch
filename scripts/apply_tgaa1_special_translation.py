@@ -6,7 +6,10 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from dgs2tool.batch import _event_blocks, _segments, _visible_text
 from dgs2tool.gmd import build_gmd_bytes, parse_gmd_bytes

@@ -1,9 +1,9 @@
 # Notices
 
 The source tree contains original interoperability tooling and the directly
-authored English translation ledger for the two 3DS-exclusive DLC
-mini-episodes. It does not contain Japanese CIAs, Steam depots, title keys,
-seeds, or extracted game assets.
+authored English translation ledgers for TGAA1's 3DS-only Special Issue and
+TGAA2's two 3DS-exclusive DLC mini-episodes. It does not contain Japanese CIAs,
+Steam depots, title keys, seeds, or extracted game assets.
 
 The GMD implementation was informed by the GPL-3.0 Kuriimu2 implementation by
 Fan Translators International:

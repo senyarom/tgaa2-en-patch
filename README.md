@@ -7,9 +7,10 @@ Saiban 2* (*The Great Ace Attorney 2: Resolve*).
 This project builds on the work of [Scarlet
 Study](https://github.com/ScarletStudy/DGS2-3DS-Release). The main-game
 episodes use the official English localization from a user-supplied PC copy of
-*The Great Ace Attorney Chronicles*. TGAA1's extra content also uses the
-official English localization; the two 3DS-exclusive TGAA2 DLC mini-episodes
-were translated directly from Japanese for this project.
+*The Great Ace Attorney Chronicles*. TGAA1's eight Escapades also use the
+official English localization. Its 3DS-only Special Issue and the two
+3DS-exclusive TGAA2 DLC mini-episodes were translated directly from Japanese
+for this project.
 
 ## Status
 
@@ -74,8 +75,10 @@ with the corresponding official Title ID.
 - `dgs2tool/` — clean-room GMD, ARC, BPS, IPS, manifest, and porting tools;
 - `scripts/` — TGAA1/TGAA2 localization, layout, title-menu, metadata, and
   offline-DLC helpers;
+- `translation/tgaa1-special-en.json` — direct Japanese-to-English TGAA1
+  Special Issue translation (6 sections, 179 segments);
 - `translation/dlc-direct-en.jsonl` — direct Japanese-to-English TGAA2 DLC
-  translation ledger;
+  translation ledger (2,012 replacements);
 - `reference/` — non-game-data format/build references;
 - `tests/` — unit and format regression tests.
 
