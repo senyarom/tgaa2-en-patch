@@ -1,4 +1,7 @@
 import unittest
+from pathlib import Path
+from tempfile import TemporaryDirectory
+from unittest.mock import patch
 
 from scripts.build_3ds_official_layout import (
     OPENING_MOVIE_MAXIMUM_LINES,
@@ -6,7 +9,7 @@ from scripts.build_3ds_official_layout import (
     line_width,
     reflow_opening_movie_caption,
 )
-from scripts.prepare_hook_romfs import validate_movie_document
+from scripts.prepare_hook_romfs import validate_movie_document, validate_movie_font
 
 
 class OpeningMovieLayoutTests(unittest.TestCase):
@@ -46,6 +49,27 @@ class OpeningMovieLayoutTests(unittest.TestCase):
         }
         with self.assertRaisesRegex(RuntimeError, "movie text overflow.*wide"):
             validate_movie_document(document, "fixture", self.widths)
+
+    def test_build_guard_rejects_non_embedded_movie_font(self):
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            archive = root / "archive" / "UI_cmn_jpn.arc"
+            archive.parent.mkdir(parents=True)
+            archive.write_bytes(b"fixture")
+            font = root / "dialogue-font.gfd"
+            font.write_bytes(b"font03")
+            parsed = {
+                "entries": [
+                    type(
+                        "Entry",
+                        (),
+                        {"name": "UI/0_system/00_font/font00_jpn.gfd", "data": b"font00"},
+                    )()
+                ]
+            }
+            with patch("scripts.prepare_hook_romfs.parse_arc", return_value=parsed):
+                with self.assertRaisesRegex(RuntimeError, "does not match embedded"):
+                    validate_movie_font(root, font)
 
 
 if __name__ == "__main__":

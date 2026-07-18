@@ -42,6 +42,27 @@ INTERACTIVE_WAIT_RE = re.compile(r"<E027>.*?<E650(?:\s[^>]*)?>", re.DOTALL)
 SPECIAL_WIDGET_RE = re.compile(r"<(E260|E521)(?:\s[^>]*)?>")
 PAGE_LINE_LIMITS = {"E041": 2, "E260": 3, "E521": 3}
 MOVIE_SUBTITLE_PATH = Path("msg") / "movie_subtitle_jpn.gmd"
+UI_ARCHIVE_PATH = Path("archive") / "UI_cmn_jpn.arc"
+
+
+def validate_movie_font(romfs: Path, font: Path) -> None:
+    """Require movie measurements to use the font shipped in the RomFS."""
+    archive_path = romfs / UI_ARCHIVE_PATH
+    archive = parse_arc(archive_path.read_bytes())
+    embedded = [
+        item.data
+        for item in archive["entries"]
+        if item.name.endswith("font00_jpn.gfd")
+    ]
+    if len(embedded) != 1:
+        raise RuntimeError(
+            f"expected one embedded font00_jpn.gfd in {archive_path}, "
+            f"found {len(embedded)}"
+        )
+    if font.read_bytes() != embedded[0]:
+        raise RuntimeError(
+            f"movie layout font does not match embedded font00_jpn.gfd: {font}"
+        )
 MESSAGE_ARCHIVE_PATH = Path("archive") / "msg_cmn_jpn.arc"
 
 
@@ -73,6 +94,7 @@ def rebuild_and_validate_movie_text(
     apply_tgaa1_ui_overrides: bool = False,
     apply_tgaa2_court_record_layout: bool = False,
 ) -> tuple[int, int]:
+    validate_movie_font(romfs, font)
     widths = read_3ds_advances(font)
 
     subtitle_path = romfs / MOVIE_SUBTITLE_PATH
