@@ -18,7 +18,7 @@ for this project.
 
 ## Status
 
-Version 1.1.0 includes hardware-tested builds for both games.
+Version 1.2.0 includes hardware-tested builds for both games.
 
 - all ten main episodes are in English;
 - installed DLC is available offline from the leftmost title-menu card;
@@ -56,7 +56,7 @@ then install its update before its DLC.
 
 Base game: `000400000014AD00`
 
-1. `TGAA1-Official-English-v2.8.5.cia` — update
+1. `TGAA1-Official-English-v2.8.6.cia` — update
    (`0004000E0014AD00`);
 2. `TGAA1-English-DLC-v1.0.5.cia` — DLC
    (`0004008C0014AD00`).
@@ -65,7 +65,7 @@ Base game: `000400000014AD00`
 
 Base game: `00040000001AE200`
 
-1. `DGS2-Official-English-v2.3.2.cia` — update
+1. `DGS2-Official-English-v2.3.3.cia` — update
    (`0004000E001AE200`);
 2. `DGS2-English-DLC-v1.0.1.cia` — DLC
    (`0004008C001AE200`).
