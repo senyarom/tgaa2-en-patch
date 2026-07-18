@@ -8,18 +8,26 @@ import re
 import shutil
 import sys
 import tempfile
+from collections import Counter
 from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT))
 
-from dgs2tool.gmd import parse_gmd_bytes  # noqa: E402
+from dgs2tool.arc import build_arc_bytes, parse_arc  # noqa: E402
+from dgs2tool.gmd import build_gmd_bytes, parse_gmd_bytes  # noqa: E402
+from dgs2tool.pagination import is_standard_dialogue_segment  # noqa: E402
 from scripts.build_3ds_official_layout import (  # noqa: E402
     INTERACTIVE_TUTORIAL_FILE,
     INTERACTIVE_TUTORIAL_LABEL,
+    OPENING_MOVIE_CAPTION_RE,
+    OPENING_MOVIE_MAXIMUM_LINES,
+    OPENING_MOVIE_MAXIMUM_WIDTH,
     line_width,
     read_3ds_advances,
+    reflow_movie_subtitles,
+    reflow_opening_movie_caption,
     reflow_tree,
     visible,
 )
@@ -29,6 +37,128 @@ TUTORIAL_RELATIVE_PATH = (
     Path("script") / "_output" / INTERACTIVE_TUTORIAL_FILE
 )
 INTERACTIVE_WAIT_RE = re.compile(r"<E027>.*?<E650(?:\s[^>]*)?>", re.DOTALL)
+SPECIAL_WIDGET_RE = re.compile(r"<(E260|E521)(?:\s[^>]*)?>")
+PAGE_LINE_LIMITS = {"E041": 2, "E260": 3, "E521": 3}
+MOVIE_SUBTITLE_PATH = Path("msg") / "movie_subtitle_jpn.gmd"
+MESSAGE_ARCHIVE_PATH = Path("archive") / "msg_cmn_jpn.arc"
+
+
+def validate_movie_document(document: dict, source: str, widths: dict[int, int]) -> int:
+    checked = 0
+    for entry in document["entries"]:
+        text = entry.get("text") or ""
+        for page_index, segment in enumerate(text.split("<PAGE>")):
+            lines = [line for line in visible(segment).splitlines() if line.strip()]
+            if not lines:
+                continue
+            checked += 1
+            measured = [line_width(line, widths) for line in lines]
+            if (
+                len(lines) > OPENING_MOVIE_MAXIMUM_LINES
+                or max(measured) > OPENING_MOVIE_MAXIMUM_WIDTH
+            ):
+                raise RuntimeError(
+                    f"movie text overflow in {source}:{entry.get('label')}:"
+                    f"page {page_index}: lines={len(lines)}, widths={measured}"
+                )
+    return checked
+
+
+def rebuild_and_validate_movie_text(romfs: Path, font: Path) -> tuple[int, int]:
+    widths = read_3ds_advances(font)
+
+    subtitle_path = romfs / MOVIE_SUBTITLE_PATH
+    subtitle_report = reflow_movie_subtitles(
+        subtitle_path,
+        widths,
+        OPENING_MOVIE_MAXIMUM_WIDTH,
+    )
+    if subtitle_report["overflow_entries"]:
+        raise RuntimeError(f"movie subtitle overflow: {subtitle_report['overflows']}")
+    subtitle_document = parse_gmd_bytes(subtitle_path.read_bytes())
+    subtitle_pages = validate_movie_document(
+        subtitle_document,
+        str(subtitle_path),
+        widths,
+    )
+
+    archive_path = romfs / MESSAGE_ARCHIVE_PATH
+    archive = parse_arc(archive_path.read_bytes())
+    replacements: dict[str, bytes] = {}
+    opening_pages = 0
+    opening_files = 0
+    for item in archive["entries"]:
+        filename = Path(item.name).name
+        if not OPENING_MOVIE_CAPTION_RE.fullmatch(filename):
+            continue
+        opening_files += 1
+        document = parse_gmd_bytes(item.data)
+        for entry in document["entries"]:
+            text = entry.get("text")
+            if text is None:
+                continue
+            replacement, reports = reflow_opening_movie_caption(text, widths)
+            overflows = [report for report in reports if report["status"] == "overflow"]
+            if overflows:
+                raise RuntimeError(
+                    f"opening movie overflow in {item.name}:{entry.get('label')}: "
+                    f"{overflows}"
+                )
+            if replacement != text:
+                entry["text"] = replacement
+                entry["text_hex"] = ""
+        rebuilt = build_gmd_bytes(document)
+        verified = parse_gmd_bytes(rebuilt)
+        opening_pages += validate_movie_document(
+            verified,
+            item.name,
+            widths,
+        )
+        replacements[item.name] = rebuilt
+    if opening_files == 0:
+        raise RuntimeError(f"no opening movie GMDs found in {archive_path}")
+    archive_path.write_bytes(build_arc_bytes(archive, replacements))
+    return subtitle_pages, opening_pages
+
+
+def validate_dialogue_widget_text(text: str, location: str) -> Counter[str]:
+    checked: Counter[str] = Counter()
+    for segment in text.split("<PAGE>"):
+        kinds: list[str] = []
+        if is_standard_dialogue_segment(segment):
+            kinds.append("E041")
+        kinds.extend(match.group(1) for match in SPECIAL_WIDGET_RE.finditer(segment))
+        if not kinds:
+            continue
+
+        lines = [line for line in visible(segment).splitlines() if line.strip()]
+        for kind in set(kinds):
+            checked[kind] += 1
+        exceeded = {
+            kind: PAGE_LINE_LIMITS[kind]
+            for kind in set(kinds)
+            if len(lines) > PAGE_LINE_LIMITS[kind]
+        }
+        if exceeded:
+            raise RuntimeError(
+                f"overfull dialogue widget in {location}: "
+                f"limits={exceeded}, lines={lines}"
+            )
+    return checked
+
+
+def validate_dialogue_widgets(romfs: Path) -> Counter[str]:
+    checked: Counter[str] = Counter()
+    for path in sorted(romfs.rglob("*.gmd")):
+        document = parse_gmd_bytes(path.read_bytes())
+        for entry in document["entries"]:
+            checked.update(
+                validate_dialogue_widget_text(
+                    entry.get("text") or "",
+                    f"{path}:{entry.get('label')}",
+                )
+            )
+    return checked
 
 
 def validate_interactive_tutorials(
@@ -149,6 +279,25 @@ def main() -> None:
     if checked == 0:
         raise RuntimeError("no interactive tutorial waits were found")
     print(f"Validated {checked} interactive tutorial page(s).")
+    widgets = validate_dialogue_widgets(args.output_romfs)
+    missing = {"E041", "E260", "E521"} - widgets.keys()
+    if missing:
+        raise RuntimeError(f"no pages found for: {', '.join(sorted(missing))}")
+    print(
+        "Validated dialogue widgets: "
+        + ", ".join(
+            f"{kind}={widgets[kind]} (max {PAGE_LINE_LIMITS[kind]} lines)"
+            for kind in ("E041", "E260", "E521")
+        )
+    )
+    subtitle_pages, opening_pages = rebuild_and_validate_movie_text(
+        args.output_romfs,
+        args.validation_font,
+    )
+    print(
+        f"Validated movie text: subtitles={subtitle_pages}, "
+        f"opening captions={opening_pages}."
+    )
 
 
 if __name__ == "__main__":

@@ -7,6 +7,7 @@ from scripts.build_3ds_official_layout import (
     line_width,
     reflow_scenario_text,
 )
+from scripts.prepare_hook_romfs import validate_dialogue_widget_text
 
 
 class PaginationTests(unittest.TestCase):
@@ -160,6 +161,33 @@ class PaginationTests(unittest.TestCase):
         self.assertIn("The victim's details are here.", result)
         self.assertEqual(result.count("<E027>"), 3)
         self.assertEqual(result.count("<E650 "), 3)
+
+    def test_two_line_build_guard_distinguishes_dialogue_widgets(self):
+        source = (
+            "<E041 1 0>one\r\ntwo<PAGE>"
+            "<E260 1 0>one\r\ntwo<PAGE>"
+            "<E521 1 0>one\r\ntwo<PAGE>"
+        )
+        self.assertEqual(
+            validate_dialogue_widget_text(source, "fixture"),
+            {"E041": 1, "E260": 1, "E521": 1},
+        )
+
+    def test_widget_build_guard_allows_three_specialised_lines(self):
+        self.assertEqual(
+            validate_dialogue_widget_text(
+                "<E521 1 0>one\r\ntwo\r\nthree<PAGE>",
+                "fixture",
+            ),
+            {"E521": 1},
+        )
+
+    def test_widget_build_guard_rejects_overfull_widget(self):
+        with self.assertRaisesRegex(RuntimeError, "fixture.*E521"):
+            validate_dialogue_widget_text(
+                "<E521 1 0>one\r\ntwo\r\nthree\r\nfour<PAGE>",
+                "fixture",
+            )
 
 
 class LocationCaptionTests(unittest.TestCase):

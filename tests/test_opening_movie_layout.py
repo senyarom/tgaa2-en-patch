@@ -6,6 +6,7 @@ from scripts.build_3ds_official_layout import (
     line_width,
     reflow_opening_movie_caption,
 )
+from scripts.prepare_hook_romfs import validate_movie_document
 
 
 class OpeningMovieLayoutTests(unittest.TestCase):
@@ -36,6 +37,15 @@ class OpeningMovieLayoutTests(unittest.TestCase):
             "".join(result.split()),
             "".join(source.split()),
         )
+
+    def test_build_guard_rejects_wide_movie_text(self):
+        document = {
+            "entries": [
+                {"label": "wide", "text": "This line is deliberately much too wide for the movie caption."},
+            ]
+        }
+        with self.assertRaisesRegex(RuntimeError, "movie text overflow.*wide"):
+            validate_movie_document(document, "fixture", self.widths)
 
 
 if __name__ == "__main__":

@@ -3,7 +3,7 @@ set confirm off
 set architecture armv6
 target remote 127.0.0.1:24689
 
-set logging file /Users/danilove/Development/tgaa-en-patch/work/private/glyph-widths.csv
+set logging file build/glyph-widths.csv
 set logging overwrite on
 set logging redirect on
 set logging enabled on

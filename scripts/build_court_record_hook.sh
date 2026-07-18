@@ -3,15 +3,16 @@
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-PROJECT_ROOT="$(cd "$REPO_ROOT/../.." && pwd)"
+GAME_DATA_ROOT="${GAME_DATA_ROOT:-$REPO_ROOT/game-data}"
+BUILD_ROOT="${BUILD_ROOT:-$REPO_ROOT/build}"
 GAME="${1:-tgaa2}"
 HOOK_SOURCE="$REPO_ROOT/native/hooks/court_record_hook.c"
 HOOK_LINKER_SCRIPT="$REPO_ROOT/native/hooks/court_record_hook.ld"
 
 case "$GAME" in
     tgaa1)
-        SOURCE_BUILD="${SOURCE_BUILD:-$PROJECT_ROOT/work/private/tgaa1-dialogue-pagination/build-v286}"
-        OUTPUT_DIR="${2:-$PROJECT_ROOT/work/private/tgaa1-hook-build}"
+        SOURCE_BUILD="${SOURCE_BUILD:-$GAME_DATA_ROOT/tgaa1}"
+        OUTPUT_DIR="${2:-$BUILD_ROOT/tgaa1}"
         CALL_SITE=0x00256E08
         # The final 0xC88 bytes of TGAA1's executable text segment are empty.
         # Do not use the tempting padding at 0x0056EA70: it belongs to the
@@ -21,15 +22,15 @@ case "$GAME" in
         ORIGINAL_SET_COURT_RECORD_DETAIL=0x00258F48
         EXPECTED_CALL="4e 08 00 eb"
         HOOK_ISA=arm
-        CIA_NAME="TGAA1-Official-English-v2.8.6-hook.cia"
-        TUTORIAL_SOURCE="$PROJECT_ROOT/work/private/dgs1-official-port-clean/romfs/script/_output/_sce00_c001_0002_jpn.gmd"
-        LAYOUT_FONT="$PROJECT_ROOT/work/private/dgs1-font-layout/archive-font00_jpn.gfd"
+        CIA_NAME="TGAA1-Official-English-v2.8.6.cia"
+        TUTORIAL_SOURCE="${TUTORIAL_SOURCE:-$GAME_DATA_ROOT/tgaa1/tutorial.gmd}"
+        LAYOUT_FONT="${LAYOUT_FONT:-$GAME_DATA_ROOT/tgaa1/font.gfd}"
         VALIDATION_FONT="$LAYOUT_FONT"
         DIALOGUE_MAXIMUM=265
         ;;
     tgaa2)
-        SOURCE_BUILD="${SOURCE_BUILD:-$PROJECT_ROOT/work/private/tgaa2-court-record-fix/build-v233}"
-        OUTPUT_DIR="${2:-$PROJECT_ROOT/work/private/tgaa2-hook-build}"
+        SOURCE_BUILD="${SOURCE_BUILD:-$GAME_DATA_ROOT/tgaa2}"
+        OUTPUT_DIR="${2:-$BUILD_ROOT/tgaa2}"
         CALL_SITE=0x0026FC84
         # TGAA2 only has 0x5C4 empty bytes at the executable text tail. The
         # compact Thumb payload fits there; the old 0x005BDA90 cave is RO.
@@ -38,8 +39,8 @@ case "$GAME" in
         ORIGINAL_SET_COURT_RECORD_DETAIL=0x00271EF0
         EXPECTED_CALL="99 08 00 eb"
         HOOK_ISA=thumb
-        CIA_NAME="DGS2-Official-English-v2.3.3-hook.cia"
-        VALIDATION_FONT="$PROJECT_ROOT/work/private/tgaa2-court-record-fix/ui-cmn/UI/0_system/00_font/font00_jpn.gfd"
+        CIA_NAME="DGS2-Official-English-v2.3.3.cia"
+        VALIDATION_FONT="${VALIDATION_FONT:-$GAME_DATA_ROOT/tgaa2/font.gfd}"
         DIALOGUE_MAXIMUM=365
         ;;
     *)
@@ -50,12 +51,12 @@ esac
 
 IMAGE_BASE=0x00100000
 
-TOOLCHAIN="/opt/devkitpro/devkitARM/bin"
-CC="$TOOLCHAIN/arm-none-eabi-gcc"
-OBJCOPY="$TOOLCHAIN/arm-none-eabi-objcopy"
-OBJDUMP="$TOOLCHAIN/arm-none-eabi-objdump"
-NM="$TOOLCHAIN/arm-none-eabi-nm"
-MAKEROM="$PROJECT_ROOT/work/Project_CTR/makerom/bin/makerom"
+TOOLCHAIN="${DEVKITARM:-/opt/devkitpro/devkitARM}/bin"
+CC="${HOOK_CC:-$TOOLCHAIN/arm-none-eabi-gcc}"
+OBJCOPY="${HOOK_OBJCOPY:-$TOOLCHAIN/arm-none-eabi-objcopy}"
+OBJDUMP="${HOOK_OBJDUMP:-$TOOLCHAIN/arm-none-eabi-objdump}"
+NM="${HOOK_NM:-$TOOLCHAIN/arm-none-eabi-nm}"
+MAKEROM="${MAKEROM:-$GAME_DATA_ROOT/tools/makerom}"
 
 for tool in "$CC" "$OBJCOPY" "$OBJDUMP" "$NM" "$MAKEROM"; do
     if [[ ! -x "$tool" ]]; then

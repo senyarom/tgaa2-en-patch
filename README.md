@@ -86,6 +86,24 @@ with the corresponding official Title ID.
 - `reference/` — non-game-data format/build references;
 - `tests/` — unit and format regression tests.
 
+Local extracted game inputs belong under the ignored `game-data/tgaa1/` and
+`game-data/tgaa2/` directories. Build products are written to the ignored
+`build/tgaa1/` and `build/tgaa2/` directories. Run a complete update build
+with the mandatory native hook using:
+
+```sh
+./run.sh tgaa1 --build-only
+./run.sh tgaa2 --build-only
+```
+
+Each game-data directory contains the current `code.bin`, `exheader.bin`,
+`icon.bin`, `update.rsf`, `romfs/`, and `base.cxi`. TGAA1 additionally needs
+`tutorial.gmd`; both games need `font.gfd`. Put `makerom` at
+`game-data/tools/makerom` or set `MAKEROM`; set `DEVKITARM` if devkitARM is not
+installed at its standard path. Running without `--build-only` installs the
+newly built CIA into an isolated Azahar profile under `build/` and launches
+the selected base game.
+
 The repository does not contain Japanese CIAs, Steam depots, title keys,
 seeds, or extracted game assets. Development inputs belong under ignored
 `private/` or `game-data/` directories.
