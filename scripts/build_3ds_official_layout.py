@@ -15,6 +15,7 @@ from PIL import Image
 
 from dgs2tool.gmd import build_gmd_bytes, parse_gmd_bytes
 from dgs2tool.location_captions import compact_location_captions
+from dgs2tool.pagination import is_standard_dialogue_segment, paginate_dialogue_text
 
 
 TAG_RE = re.compile(r"<[^>]*>")
@@ -24,6 +25,24 @@ WORD_INTERNAL_NEWLINE_RE = re.compile(
     r"((?:[A-Z]|<[^>]*>){16,})(?:\r\n|\n)(?=(?:[A-Z]|<[^>]*>){16,})"
 )
 SPECIAL_LAYOUT_TAGS = ("<CNTR>", "<SIZE ", "<RUBY>", "<RT>")
+COURT_RECORD_CAPTION_FILES = {
+    "cast_caption_jpn.gmd",
+    "evidence_caption_jpn.gmd",
+}
+COURT_RECORD_SIZE_RE = re.compile(r"^<SIZE (\d+)>")
+COURT_RECORD_MAXIMUM_LINES = 4
+COURT_RECORD_PHYSICAL_WIDTH = 185
+MAIN_DIALOGUE_MAXIMUM_LINES = 2
+MAIN_DIALOGUE_MAXIMUM_WIDTH = 265
+MAIN_DIALOGUE_REFLOW_MAXIMUM_LINES = 32
+OPENING_MOVIE_CAPTION_RE = re.compile(r"opdemo\d+_jpn\.gmd")
+OPENING_MOVIE_MAXIMUM_LINES = 4
+OPENING_MOVIE_MAXIMUM_WIDTH = 304
+DEFAULT_COURT_RECORD_OVERRIDES = (
+    Path(__file__).resolve().parents[1] / "translation" / "court-record-en.jsonl"
+)
+
+
 def _gfd_name_end(blob: bytes, header_size: int, float_count: int) -> int:
     offset = header_size + float_count * 4
     name_length = struct.unpack_from("<i", blob, offset)[0]
@@ -338,6 +357,111 @@ def reflow_text(
     return result, reports
 
 
+def reflow_scenario_text(
+    text: str,
+    widths: dict[int, int],
+    maximum: int,
+    max_lines: int,
+    dialogue_maximum: int = MAIN_DIALOGUE_MAXIMUM_WIDTH,
+) -> tuple[str, list[dict]]:
+    """Reflow normal dialogue separately from specialised text widgets.
+
+    The GFD advances describe the 12-pixel font cells, while E041 dialogue is
+    rendered at roughly 1.25x scale.  A 265-unit limit therefore protects the
+    physical right edge and the page-advance arrow.  We may create more than
+    two temporary lines here; ``paginate_dialogue_text`` turns them into
+    ordinary two-line E023/PAGE continuations immediately afterwards.
+    """
+    segments = text.split("<PAGE>")
+    reports: list[dict] = []
+    output: list[str] = []
+    for page_index, segment in enumerate(segments):
+        if is_standard_dialogue_segment(segment):
+            segment_maximum = dialogue_maximum
+            segment_max_lines = MAIN_DIALOGUE_REFLOW_MAXIMUM_LINES
+        else:
+            segment_maximum = maximum
+            segment_max_lines = max_lines
+        replacement, report = reflow_segment(
+            segment,
+            widths,
+            segment_maximum,
+            segment_max_lines,
+        )
+        if report is not None:
+            report["page"] = page_index
+            report["layout"] = (
+                "standard_dialogue"
+                if is_standard_dialogue_segment(segment)
+                else "specialised_widget"
+            )
+            reports.append(report)
+        output.append(replacement)
+    result = "<PAGE>".join(output)
+    if [match.group() for match in TAG_RE.finditer(result)] != [
+        match.group() for match in TAG_RE.finditer(text)
+    ]:
+        raise ValueError("scenario reflow changed the GMD tag sequence")
+    if "".join(visible(result).split()) != "".join(visible(text).split()):
+        raise ValueError("scenario reflow changed visible wording")
+    return result, reports
+
+
+def reflow_court_record_caption(
+    text: str,
+    widths: dict[int, int],
+    physical_maximum: int = COURT_RECORD_PHYSICAL_WIDTH,
+    maximum_lines: int = COURT_RECORD_MAXIMUM_LINES,
+) -> tuple[str, list[dict]]:
+    """Fit an Evidence/People description into the 3DS Court Record panel.
+
+    The description begins about 205 pixels before the right edge of the
+    lower screen and the GUI has room for four lines.  The PC line breaks are
+    laid out for a wider window, so the normal 365-pixel dialogue reflow does
+    not protect this panel.  A conservative 185-pixel limit leaves room for
+    the renderer's right-side overhang.  Unlike normal dialogue, this widget
+    ignores the GMD ``SIZE`` tag, so entries that still overflow after reflow
+    must use a concise wording override.
+    """
+    existing_size = COURT_RECORD_SIZE_RE.match(text)
+    body = text[existing_size.end() :] if existing_size else text
+    original_visible = "".join(visible(body).split())
+    replacement, reports = reflow_text(
+        body,
+        widths,
+        physical_maximum,
+        max_lines=maximum_lines,
+    )
+    if "".join(visible(replacement).split()) != original_visible:
+        raise ValueError("Court Record reflow changed visible wording")
+    return replacement, reports
+
+
+def normalize_court_record_wording(text: str) -> str:
+    existing_size = COURT_RECORD_SIZE_RE.match(text)
+    body = text[existing_size.end() :] if existing_size else text
+    return " ".join(visible(body).split())
+
+
+def load_court_record_overrides(path: Path | None) -> dict[tuple[str, str, str], str]:
+    if path is None or not path.exists():
+        return {}
+    overrides: dict[tuple[str, str, str], str] = {}
+    for line_number, raw_line in enumerate(path.read_text().splitlines(), 1):
+        if not raw_line.strip():
+            continue
+        item = json.loads(raw_line)
+        key = (
+            item["file"],
+            item["label"],
+            normalize_court_record_wording(item["source"]),
+        )
+        if key in overrides:
+            raise ValueError(f"duplicate Court Record override at {path}:{line_number}")
+        overrides[key] = item["text"]
+    return overrides
+
+
 def reflow_location_captions(
     text: str,
     widths: dict[int, int],
@@ -346,33 +470,85 @@ def reflow_location_captions(
     return compact_location_captions(text, widths, maximum)
 
 
-def reflow_tree(root: Path, widths: dict[int, int], maximum: int) -> dict:
+def reflow_tree(
+    root: Path,
+    widths: dict[int, int],
+    maximum: int,
+    court_record_overrides: dict[tuple[str, str, str], str] | None = None,
+    dialogue_maximum: int = MAIN_DIALOGUE_MAXIMUM_WIDTH,
+) -> dict:
+    court_record_overrides = court_record_overrides or {}
     changed_files = 0
     reflowed = 0
+    paginated = 0
     overflows: list[dict] = []
     examples: list[dict] = []
     for path in sorted(root.rglob("*.gmd")):
         document = parse_gmd_bytes(path.read_bytes())
         if re.fullmatch(r"aoc\d{2}_jpn\.gmd", path.name):
             max_lines = 6
+            paginate_main_dialogue = False
+        elif OPENING_MOVIE_CAPTION_RE.fullmatch(path.name):
+            max_lines = OPENING_MOVIE_MAXIMUM_LINES
+            paginate_main_dialogue = False
         elif path.name == "explain_content_jpn.gmd":
             max_lines = 5
+            paginate_main_dialogue = False
         elif path.name == "system_jpn.gmd":
             max_lines = 4
+            paginate_main_dialogue = False
         else:
             max_lines = 3
+            paginate_main_dialogue = True
         file_changed = False
         for entry in document["entries"]:
             text = entry.get("text")
             if text is None:
                 continue
-            replacement, location_reports = reflow_location_captions(text, widths, maximum)
-            replacement, reports = reflow_text(replacement, widths, maximum, max_lines)
-            reports = location_reports + reports
+            if path.name in COURT_RECORD_CAPTION_FILES and entry.get("label") != "null":
+                override_key = (
+                    path.name,
+                    entry.get("label"),
+                    normalize_court_record_wording(text),
+                )
+                text = court_record_overrides.get(override_key, text)
+                replacement, reports = reflow_court_record_caption(text, widths)
+            elif OPENING_MOVIE_CAPTION_RE.fullmatch(path.name):
+                replacement, reports = reflow_opening_movie_caption(text, widths)
+            else:
+                replacement, location_reports = reflow_location_captions(
+                    text, widths, maximum
+                )
+                if paginate_main_dialogue:
+                    replacement, reports = reflow_scenario_text(
+                        replacement,
+                        widths,
+                        maximum,
+                        max_lines,
+                        dialogue_maximum,
+                    )
+                    replacement, pagination_reports = paginate_dialogue_text(
+                        replacement,
+                        MAIN_DIALOGUE_MAXIMUM_LINES,
+                        skip_without_speaker=True,
+                        skip_tags=SPECIAL_LAYOUT_TAGS,
+                    )
+                    for report in pagination_reports:
+                        report["status"] = "paginated"
+                    reports.extend(pagination_reports)
+                else:
+                    replacement, reports = reflow_text(
+                        replacement, widths, maximum, max_lines
+                    )
+                reports = location_reports + reports
             for report in reports:
                 report.update({"file": path.name, "label": entry.get("label")})
                 if report["status"] == "reflowed":
                     reflowed += 1
+                    if len(examples) < 30:
+                        examples.append(report)
+                elif report["status"] == "paginated":
+                    paginated += 1
                     if len(examples) < 30:
                         examples.append(report)
                 elif report["status"] == "overflow":
@@ -392,8 +568,11 @@ def reflow_tree(root: Path, widths: dict[int, int], maximum: int) -> dict:
             changed_files += 1
     return {
         "maximum_line_width": maximum,
+        "main_dialogue_maximum_width": dialogue_maximum,
+        "main_dialogue_maximum_lines": MAIN_DIALOGUE_MAXIMUM_LINES,
         "changed_files": changed_files,
         "reflowed_pages": reflowed,
+        "paginated_pages": paginated,
         "overflow_pages": len(overflows),
         "overflows": overflows,
         "examples": examples,
@@ -442,6 +621,23 @@ def reflow_movie_subtitles(
     }
 
 
+def reflow_opening_movie_caption(
+    text: str,
+    widths: dict[int, int],
+    maximum: int = OPENING_MOVIE_MAXIMUM_WIDTH,
+    maximum_lines: int = OPENING_MOVIE_MAXIMUM_LINES,
+) -> tuple[str, list[dict]]:
+    """Fit the centred lower-screen prose used by the case opening movies.
+
+    These strings live in ``opdemoNN_jpn.gmd`` inside ``msg_cmn_jpn.arc``.
+    They are not E041 dialogue and have no pagination arrow, so the normal
+    dialogue pass deliberately ignores them.  The widget is centred on the
+    320-pixel lower screen; a 304-pixel line limit leaves an eight-pixel safe
+    margin at either side and prevents symmetric clipping.
+    """
+    return reflow_text(text, widths, maximum, max_lines=maximum_lines)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("pc_gfd", type=Path)
@@ -452,8 +648,18 @@ def main() -> None:
     parser.add_argument("report", type=Path)
     parser.add_argument("--scale", type=float, default=1 / 3)
     parser.add_argument("--maximum", type=int, default=365)
+    parser.add_argument(
+        "--dialogue-maximum",
+        type=int,
+        default=MAIN_DIALOGUE_MAXIMUM_WIDTH,
+    )
     parser.add_argument("--movie-subtitle-gmd", type=Path)
     parser.add_argument("--movie-maximum", type=int, default=304)
+    parser.add_argument(
+        "--court-record-overrides",
+        type=Path,
+        default=DEFAULT_COURT_RECORD_OVERRIDES,
+    )
     args = parser.parse_args()
 
     pc_advances = read_pc_v3_advances(args.pc_gfd)
@@ -466,7 +672,13 @@ def main() -> None:
     )
     report = {
         "font": font_report,
-        "reflow": reflow_tree(args.gmd_root, widths, args.maximum),
+        "reflow": reflow_tree(
+            args.gmd_root,
+            widths,
+            args.maximum,
+            load_court_record_overrides(args.court_record_overrides),
+            args.dialogue_maximum,
+        ),
     }
     if args.movie_subtitle_gmd is not None:
         report["movie_subtitles"] = reflow_movie_subtitles(

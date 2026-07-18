@@ -2,6 +2,7 @@ import unittest
 
 from dgs2tool.location_captions import compact_location_captions
 from dgs2tool.pagination import dialogue_page_line_counts, paginate_dialogue_text, visible_text
+from scripts.build_3ds_official_layout import line_width, reflow_scenario_text
 
 
 class PaginationTests(unittest.TestCase):
@@ -46,6 +47,56 @@ class PaginationTests(unittest.TestCase):
         result, _reports = paginate_dialogue_text(source)
         self.assertTrue(result.endswith("third line<E024><PAGE>"))
         self.assertEqual(dialogue_page_line_counts(result), [2, 1])
+
+    def test_can_skip_non_dialogue_three_line_widgets(self):
+        source = (
+            "<E800 1><E260 27 23><E025 2.5>First line\r\n"
+            "second line\r\nthird line<E023><PAGE>"
+        )
+        result, reports = paginate_dialogue_text(
+            source,
+            skip_without_speaker=True,
+        )
+        self.assertEqual(result, source)
+        self.assertEqual(reports, [])
+
+    def test_reflows_width_then_paginates_to_two_lines(self):
+        widths = {codepoint: 1 for codepoint in range(128)}
+        source = (
+            "<E800 1><E041 1 0><E025 2.5>alpha beta gamma\r\n"
+            "delta epsilon zeta<E023><PAGE>"
+        )
+        reflowed, reports = reflow_scenario_text(
+            source,
+            widths,
+            maximum=100,
+            max_lines=3,
+            dialogue_maximum=12,
+        )
+        result, pagination_reports = paginate_dialogue_text(
+            reflowed,
+            skip_without_speaker=True,
+        )
+        self.assertTrue(reports)
+        self.assertTrue(pagination_reports)
+        self.assertTrue(all(count <= 2 for count in dialogue_page_line_counts(result)))
+        for page in result.split("<PAGE>"):
+            for line in visible_text(page).splitlines():
+                if line.strip():
+                    self.assertLessEqual(line_width(line, widths), 12)
+
+    def test_can_skip_special_layout_dialogue(self):
+        source = (
+            "<E800 1><E041 1 0><CNTR><SIZE 12>First line\r\n"
+            "second line\r\nthird line</SIZE><E023><PAGE>"
+        )
+        result, reports = paginate_dialogue_text(
+            source,
+            skip_without_speaker=True,
+            skip_tags=("<CNTR>", "<SIZE "),
+        )
+        self.assertEqual(result, source)
+        self.assertEqual(reports, [])
 
 
 class LocationCaptionTests(unittest.TestCase):

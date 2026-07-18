@@ -46,6 +46,14 @@ def _first_visible_offset(text: str) -> int | None:
     return None
 
 
+def is_standard_dialogue_segment(segment: str) -> bool:
+    """Return whether visible text is introduced by the normal E041 box."""
+    first_visible = _first_visible_offset(segment)
+    return first_visible is not None and bool(
+        SPEAKER_RE.search(segment, 0, first_visible)
+    )
+
+
 def _visible_lines(segment: str) -> list[dict]:
     """Return non-empty visible lines and their following raw newline."""
     lines: list[dict] = []
@@ -172,11 +180,19 @@ def _split_page(segment: str, maximum_lines: int) -> tuple[str, str, dict]:
     }
 
 
-def paginate_dialogue_text(text: str, maximum_lines: int = 2) -> tuple[str, list[dict]]:
+def paginate_dialogue_text(
+    text: str,
+    maximum_lines: int = 2,
+    *,
+    skip_without_speaker: bool = False,
+    skip_tags: tuple[str, ...] = (),
+) -> tuple[str, list[dict]]:
     """Split every dialogue page that exceeds ``maximum_lines``.
 
     The operation is idempotent: a second pass sees only pages at or below the
-    limit and therefore makes no changes.
+    limit and therefore makes no changes.  ``skip_without_speaker`` is useful
+    for a mixed main-game script tree: E260/E521 text belongs to specialised
+    court and deduction widgets, not the normal E041 dialogue box.
     """
     if maximum_lines < 1:
         raise ValueError("maximum_lines must be positive")
@@ -189,6 +205,12 @@ def paginate_dialogue_text(text: str, maximum_lines: int = 2) -> tuple[str, list
             segment = pending.pop(0)
             line_count = len(_visible_lines(segment))
             if not visible_text(segment).strip() or line_count <= maximum_lines:
+                output.append(segment)
+                continue
+            has_speaker = is_standard_dialogue_segment(segment)
+            if (skip_without_speaker and not has_speaker) or any(
+                tag in segment for tag in skip_tags
+            ):
                 output.append(segment)
                 continue
             first, second, report = _split_page(segment, maximum_lines)

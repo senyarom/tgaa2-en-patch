@@ -20,6 +20,37 @@ VISIBLE_UI_FILES = {
     "title_jpn.gmd",
 }
 
+UI_LAYOUT_OVERRIDES = {
+    ("UI_jpn.gmd", "PANEL_TR_0"): (
+        "<FONT 0><SIZE 16><CNTR>Court Record",
+        "<FONT 0><SIZE 13><CNTR>Court Record",
+    ),
+}
+
+
+def apply_layout_overrides(filename: str, document: dict) -> list[str]:
+    changed: list[str] = []
+    entries_by_label = {
+        entry.get("label"): entry for entry in document.get("entries", [])
+    }
+    for (target_file, label), (expected, replacement) in UI_LAYOUT_OVERRIDES.items():
+        if filename != target_file:
+            continue
+        entry = entries_by_label.get(label)
+        if entry is None:
+            raise ValueError(f"missing UI layout target {filename}:{label}")
+        current = entry.get("text") or ""
+        if current == replacement:
+            continue
+        if current != expected:
+            raise ValueError(
+                f"unexpected UI layout text at {filename}:{label}: {current!r}"
+            )
+        entry["text"] = replacement
+        entry["text_hex"] = ""
+        changed.append(label)
+    return changed
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("official_root", type=Path)
@@ -51,6 +82,8 @@ def main() -> int:
             entry["text_hex"] = ""
             replaced.append(entry.get("label"))
 
+        layout_overrides = apply_layout_overrides(filename, official)
+
         output_blob = build_gmd_bytes(official)
         verified = parse_gmd_bytes(output_blob)
         remaining = [
@@ -63,11 +96,19 @@ def main() -> int:
         destination = args.output_root / filename
         destination.parent.mkdir(parents=True, exist_ok=True)
         destination.write_bytes(output_blob)
-        records.append({"file": filename, "replaced": len(replaced), "labels": replaced})
+        records.append({
+            "file": filename,
+            "replaced": len(replaced),
+            "labels": replaced,
+            "layout_overrides": layout_overrides,
+        })
 
     report = {
         "files_written": len(records),
         "entries_replaced": sum(record["replaced"] for record in records),
+        "layout_overrides": sum(
+            len(record["layout_overrides"]) for record in records
+        ),
         "files": records,
     }
     args.report.parent.mkdir(parents=True, exist_ok=True)
