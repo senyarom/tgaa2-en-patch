@@ -7,6 +7,7 @@ from scripts.build_3ds_official_layout import (
     load_court_record_overrides,
     normalize_court_record_wording,
     reflow_court_record_caption,
+    reflow_court_record_caption_adaptive,
     visible,
 )
 
@@ -60,6 +61,22 @@ class CourtRecordLayoutTests(unittest.TestCase):
         )
         self.assertEqual(second, first)
         self.assertEqual(reports, [])
+
+    def test_adaptive_layout_selects_largest_fitting_size_and_is_idempotent(self):
+        source = "aaaaaaaaaa"
+        first, report = reflow_court_record_caption_adaptive(
+            source,
+            self.widths,
+            physical_maximum=8,
+        )
+        second, second_report = reflow_court_record_caption_adaptive(
+            first,
+            self.widths,
+            physical_maximum=8,
+        )
+        self.assertEqual(first, second)
+        self.assertEqual(report, second_report)
+        self.assertIn("<SIZE ", first)
 
     def test_loads_wording_override_independently_of_line_breaks(self):
         with TemporaryDirectory() as directory:

@@ -36,6 +36,8 @@ COURT_RECORD_CAPTION_FILES = {
 COURT_RECORD_SIZE_RE = re.compile(r"^<SIZE (\d+)>")
 COURT_RECORD_MAXIMUM_LINES = 4
 COURT_RECORD_PHYSICAL_WIDTH = 185
+COURT_RECORD_ADAPTIVE_PHYSICAL_WIDTH = 205
+COURT_RECORD_MINIMUM_FONT_SIZE = 10
 MAIN_DIALOGUE_MAXIMUM_LINES = 2
 MAIN_DIALOGUE_MAXIMUM_WIDTH = 265
 MAIN_DIALOGUE_REFLOW_MAXIMUM_LINES = 32
@@ -496,6 +498,38 @@ def reflow_court_record_caption(
     if "".join(visible(replacement).split()) != original_visible:
         raise ValueError("Court Record reflow changed visible wording")
     return replacement, reports
+
+
+def reflow_court_record_caption_adaptive(
+    text: str,
+    widths: dict[int, int],
+    physical_maximum: int = COURT_RECORD_ADAPTIVE_PHYSICAL_WIDTH,
+    maximum_lines: int = COURT_RECORD_MAXIMUM_LINES,
+) -> tuple[str, dict]:
+    """Reproduce TGAA2's pre-hook adaptive Court Record layout.
+
+    The historical build selected the largest SIZE from 16 down to 10 whose
+    logical line widths fit the same physical panel.  Keeping this step makes
+    clean pre-hook inputs reproduce the released GMDs exactly; the native
+    hook then remains free to correct runtime glyph measurements.
+    """
+    existing_size = COURT_RECORD_SIZE_RE.match(text)
+    body = text[existing_size.end() :] if existing_size else text
+    for font_size in range(16, COURT_RECORD_MINIMUM_FONT_SIZE - 1, -1):
+        logical_maximum = physical_maximum * 16 // font_size
+        replacement, reports = reflow_text(
+            body,
+            widths,
+            logical_maximum,
+            max_lines=maximum_lines,
+        )
+        if not any(report["status"] == "overflow" for report in reports):
+            prefix = f"<SIZE {font_size}>" if font_size < 16 else ""
+            return prefix + replacement, {
+                "font_size": font_size,
+                "logical_maximum": logical_maximum,
+            }
+    raise ValueError("Court Record caption does not fit at minimum font size")
 
 
 def normalize_court_record_wording(text: str) -> str:

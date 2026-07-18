@@ -27,10 +27,12 @@ from scripts.build_3ds_official_layout import (  # noqa: E402
     line_width,
     read_3ds_advances,
     reflow_movie_subtitles,
+    reflow_court_record_caption_adaptive,
     reflow_opening_movie_caption,
     reflow_tree,
     visible,
 )
+from scripts.patch_tgaa1_3ds_ui import apply_layout_overrides  # noqa: E402
 
 
 TUTORIAL_RELATIVE_PATH = (
@@ -64,7 +66,13 @@ def validate_movie_document(document: dict, source: str, widths: dict[int, int])
     return checked
 
 
-def rebuild_and_validate_movie_text(romfs: Path, font: Path) -> tuple[int, int]:
+def rebuild_and_validate_movie_text(
+    romfs: Path,
+    font: Path,
+    *,
+    apply_tgaa1_ui_overrides: bool = False,
+    apply_tgaa2_court_record_layout: bool = False,
+) -> tuple[int, int]:
     widths = read_3ds_advances(font)
 
     subtitle_path = romfs / MOVIE_SUBTITLE_PATH
@@ -89,31 +97,51 @@ def rebuild_and_validate_movie_text(romfs: Path, font: Path) -> tuple[int, int]:
     opening_files = 0
     for item in archive["entries"]:
         filename = Path(item.name).name
-        if not OPENING_MOVIE_CAPTION_RE.fullmatch(filename):
+        opening_caption = bool(OPENING_MOVIE_CAPTION_RE.fullmatch(filename))
+        ui_override = apply_tgaa1_ui_overrides and filename == "UI_jpn.gmd"
+        court_record = (
+            apply_tgaa2_court_record_layout
+            and filename in {"cast_caption_jpn.gmd", "evidence_caption_jpn.gmd"}
+        )
+        if not opening_caption and not ui_override and not court_record:
             continue
-        opening_files += 1
         document = parse_gmd_bytes(item.data)
-        for entry in document["entries"]:
-            text = entry.get("text")
-            if text is None:
-                continue
-            replacement, reports = reflow_opening_movie_caption(text, widths)
-            overflows = [report for report in reports if report["status"] == "overflow"]
-            if overflows:
-                raise RuntimeError(
-                    f"opening movie overflow in {item.name}:{entry.get('label')}: "
-                    f"{overflows}"
+        if opening_caption:
+            opening_files += 1
+            for entry in document["entries"]:
+                text = entry.get("text")
+                if text is None:
+                    continue
+                replacement, reports = reflow_opening_movie_caption(text, widths)
+                overflows = [report for report in reports if report["status"] == "overflow"]
+                if overflows:
+                    raise RuntimeError(
+                        f"opening movie overflow in {item.name}:{entry.get('label')}: "
+                        f"{overflows}"
+                    )
+                if replacement != text:
+                    entry["text"] = replacement
+                    entry["text_hex"] = ""
+        if ui_override:
+            apply_layout_overrides(filename, document)
+        if court_record:
+            for entry in document["entries"]:
+                text = entry.get("text")
+                if text is None or entry.get("label") == "null":
+                    continue
+                entry["text"], _report = reflow_court_record_caption_adaptive(
+                    text,
+                    widths,
                 )
-            if replacement != text:
-                entry["text"] = replacement
                 entry["text_hex"] = ""
         rebuilt = build_gmd_bytes(document)
         verified = parse_gmd_bytes(rebuilt)
-        opening_pages += validate_movie_document(
-            verified,
-            item.name,
-            widths,
-        )
+        if opening_caption:
+            opening_pages += validate_movie_document(
+                verified,
+                item.name,
+                widths,
+            )
         replacements[item.name] = rebuilt
     if opening_files == 0:
         raise RuntimeError(f"no opening movie GMDs found in {archive_path}")
@@ -251,6 +279,7 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("source_romfs", type=Path)
     parser.add_argument("output_romfs", type=Path)
+    parser.add_argument("--game", required=True, choices=("tgaa1", "tgaa2"))
     parser.add_argument("--tgaa1-tutorial-source", type=Path)
     parser.add_argument("--font", type=Path)
     parser.add_argument("--validation-font", required=True, type=Path)
@@ -293,6 +322,8 @@ def main() -> None:
     subtitle_pages, opening_pages = rebuild_and_validate_movie_text(
         args.output_romfs,
         args.validation_font,
+        apply_tgaa1_ui_overrides=args.game == "tgaa1",
+        apply_tgaa2_court_record_layout=args.game == "tgaa2",
     )
     print(
         f"Validated movie text: subtitles={subtitle_pages}, "

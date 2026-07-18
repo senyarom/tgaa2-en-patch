@@ -100,6 +100,7 @@ fi
 python3 "$REPO_ROOT/scripts/prepare_hook_romfs.py" \
     "$SOURCE_BUILD/romfs" \
     "$STAGED_ROMFS" \
+    --game "$GAME" \
     --validation-font "$VALIDATION_FONT" \
     --dialogue-maximum "$DIALOGUE_MAXIMUM" \
     ${PREPARE_ROMFS_ARGS[@]+"${PREPARE_ROMFS_ARGS[@]}"}
